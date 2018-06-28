@@ -2,7 +2,10 @@
 
 p {
 	font-size: $font-size24;
-	margin-bottom: 24px;
+	border-bottom: 1px solid #E3E3E3;
+	display: block;
+	height: 40px;
+	margin-top: 12px;
 }
 
 
@@ -25,21 +28,15 @@ p {
 // header end
 
 
-// main start
-
-.all {
-	overflow: hidden;
-	margin-top: 65px;
-	min-width: 1202px;
-}
-
-// nav
+// nav start
 
 .nav {
-	float:left;
 	width: 300px;
 	border-right: 1px solid #000;
 	padding-top: 30px;
+	position: absolute;
+	top: 65px;
+	left: 0px;
 	li {
 		padding: 5px 0;
 		padding-left: 50px;
@@ -50,23 +47,35 @@ p {
 // nav end
 
 
+// main start
+
+.all {
+	margin-top: 65px;
+	min-width: 1202px;
+	position: relative;
+}
+
 // content start
 
 // button start
 
 .content {
-	float: right;
-	margin-right: 200px;
-	border: 1px solid #000;
-	.content_c {
-		width: 700px;
-		margin-bottom: 24px;
-	}
+	// border: 1px solid #000;
+	width: 50%;
+	margin: 0 auto;
+	overflow: hidden;
 }
 
 .button_display {
 	
+	margin-top: 12px;
+
+	button {
+		margin: 0 10px;
+	}
+
 	.black-white-bgc {
+		margin-top: 12px;
 		background-color: #777;
 		padding: 12px 0px;
 
@@ -81,6 +90,10 @@ p {
 		
 		.button-black-white-medium {
 			@include button-black-white((4px 8px));
+		}
+
+		.button-black-white-small {
+			@include button-black-white((1px 2px));
 		}
 	}
 }
