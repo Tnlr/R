@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>超链接提示功能</title>
+		<script type="text/javascript" src="js/jquery-3.3.1.min.js" ></script>
+		<script>
+			$(function(){
+				var x=10;
+				var y=20;
+			    $("a.tooltip").mouseover(function(e){
+			    	this.myTitle=this.title;    //获取title
+			    	this.title="";
+			    	var tooltip="<div id='tooltip'>"+this.myTitle+"</div>";
+			    	
+			    	$("body").append(tooltip);
+			    	$("#tooltip")
+			    	    .css({
+			    	    	"position": "absolute",
+			    	    	"top": (e.pageY+y)+"px",
+			    	    	"left": (e.pageX+x)+"px"
+			    	}).show("fast");
+			    }).mouseout(function(){
+			    	this.title=this.myTitle;
+			    	$("#tooltip").remove();
+			    }).mousemove(function(e){
+			    	$("#tooltip")
+			    	    .css({
+			    	    	"top": (e.pageY+y)+"px",
+			    	    	"left": (e.pageX+x)+"px"
+			    	    });
+			    });
+			})
+		</script>
+	</head>
+	<body>
+		<p><a href="" class="tooltip" title="这是我的超链接1.">提示1.</a></p>
+		<p><a href="" class="tooltip" title="这是我的超链接2.">提示2.</a></p>
+		<p><a href="" title="这是自带提示1.">自带提示1.</a></p>
+		<p><a href="" title="这是自带提示2.">自带提示2.</a></p>						
+	</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+		<style type="text/css">
+			#check {
+				margin: 20px auto;
+			}
+			
+			#check .input_check {
+				height:20px;
+				width:20px;
+				-webkit-appearance:none;
+				background: url("img/1.jpg") no-repeat ;
+				
+			}
+			
+			
+		</style>
+	</head>
+
+	<body>
+		<div id="check">
+			<span><input type="checkbox"class="input_check" ></span>
+			<span><input type="checkbox"class="input_check" ></span>
+			<span><input type="checkbox"class="input_check" name="che" ></span>
+		</div>
+		<p>sdsdsds</p>
+		<h1></h1>
+		<select>
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+		</select>
+		<script type="text/javascript">
+			$(function(){
+				$(".input_check").click(function(){
+					$(this).prop("checked")?$(this).css("background-position","-17px -30px"):$(this).css("background-position","0px 0px");
+				})
+			})
+		</script>
+	</body>
+
+</html>

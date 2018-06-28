@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>导航栏</title>
+		<script type="text/javascript" src="js/jquery-3.3.1.min.js" ></script>
+		<style>
+			#menu {
+				width: 300px;
+			}
+			
+			.has-children {
+				background: #555;
+				color: #fff;
+				cursor: pointer;
+			}
+			
+			.highligh {
+				color:#fff;
+				background: green;
+			}
+			div {
+				padding: 0;
+				margin: 10px 0;
+			}
+			
+			div a {
+				background: #888;
+				display: none;
+				float: left;
+				width: 300px;
+			}
+		</style>
+		<script>
+			$(document).ready(function(){
+				$(".has-children").click(function(){
+				    $(this).addClass("highlight").children("a").show().end().siblings().removeClass("highlight").children("a").hide();
+			   });
+			});
+			
+		</script>
+	</head>
+	<body>
+		<div id="menu">
+			<div class="has-children">
+				<span>第1章-认识Jquery</span>
+				<a>1.1-JavaScript和JavaScript库</a>
+				<a>1.2-加入jquery</a>
+			</div>
+			<div class="has-children">
+				<span>第2章-jQuery选择器</span>
+				<a>2.1-jQuery选择器是什么</a>
+			</div>
+		</div>
+	</body>
+</html>

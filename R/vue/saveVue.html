@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vue Save</title>
+	<script type="text/javascript" src="js/vue.js"></script>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+
+		html,
+		body {
+			font-size: 16px;
+		}
+
+		span:after {
+			content: '';
+			display: block;
+		}
+
+		b {
+			font-size: 1rem;
+		}
+
+		b:after {
+			content: '';
+			margin-right: 10px;
+		}
+		
+	</style>
+</head>
+<body>
+	<div style="color: #fff; background-color: #000;">
+		<ul style="margin-left: 25px;">
+			<li>深入了解组件</li>
+		</ul>		
+	</div>
+	<br /><hr /><br />
+
+	<!-- '{{}}' 与'v-' 可以加函数表达式 --> 
+	<div id="vm">
+		<span>{{ msg }}</span> <!-- 数据绑定 -->
+		<span v-html="spanTest"></span> <!-- 附加到<span>标签下 -->
+		<span v-if="seen">seen=true</span> <!-- 控制是否显示 -->
+		<br />
+
+		<!-- 绑定class/style属性时，可以使用对象语法与数组语法 -->
+		<!-- 绑定style属性时可以绑定多重值(-webkit-,-moz-,-ms-,-o-)等情况 -->
+		<span v-bind:id="dynamicId"></span> <!-- 绑定属性(id可以为任意属性) -->
+		<span :id="dynamicId"></span> <!-- 绑定属性(id可以为任意属性) -->
+		<br />
+		
+		<span>{{ computed }}</span> <!-- 使用计算属性 -->
+		<span>{{ method() }}</span> <!-- 使用方法 -->
+		<br />
+		
+		<!-- v-if语句 -->
+		<span v-if="type==='A'">type === A : Show A</span>
+		<span v-else-if="type==='B'">type === B : Show B</span>
+		<span v-else>type != A && type != B : Show C</span>
+		
+		<!-- key语句的使用，给不同输入框加上不同key，会让输入框转变时刷新内容(标识是不同的输入框) -->
+		<template v-if="loginType==='username'">
+			<label>Username:
+				<input type="text" placeholder="Enter your username" key="username-input" />
+			</label>
+		</template>
+		<template v-else>
+			<label>Email:
+				<input type="text" placeholder="Enter your email address" key="email-input" />
+			</label>
+		</template>
+		<br />
+	
+		<!-- v-for语句 -->
+		<!-- 尽量给不同的v-for加上key?不太懂 -->
+		<!-- 动态改变数组(在修改数组类型与对象类型时会有不同的表现)：-->
+		<!-- Vue.set(vm.items, indexOfItem, newValue) -->
+		<!-- vm.$set(vm.items, indexOfItem, newValue) -->
+		<!-- vm.items.splice(indexOfItem, 1, newValue) -->
+		<ul>
+			<li v-for="item in items">{{ item.message + '-' + type }}</li> <!-- 数组类型 -->
+			<br />
+			<!-- 重写整个对象类型：vm.object = Object.assign({}, vm.object, {}); -->
+			<li v-for="value in object">{{ value }}</li> <!-- 对象类型 -->
+			<br />
+			<li v-for="(value, key, index) in object">{{index + ' : ' +  key + ' : ' + value }}</li> <!-- 对象类型 -->
+			<br />
+			<li v-for="n in evenNumbers">{{ n }}</li> <!-- 数组过滤(计算属性) -->
+			<br />
+			<li v-for="n in even(numbers)">{{ n }}</li> <!-- 数组过滤(定义方法) -->
+		</ul>
+		<br />
+		<hr />
+
+
+		<h2>v-on: </h2>
+		<b>事件绑定(一般写法与缩写):</b>
+		<!-- 绑定事件(doSomething为事件名) -->
+		<button v-on:click="doSomething('Bob')">Click</button>
+		<!-- 绑定事件(doSomething为事件名) -->
+		<button @click="doSomething('Cat')">@Click</button>
+		<br /><br />
+
+		<b>事件修饰符:</b>
+		<!-- 只能点击一次 -->
+		<button v-on:click.once="doSomething('dag')">只能点击一次</button>
+		<p>事件修饰符：.stop .prevent .capture .self .once .passive</p>
+		<p>事件修饰符可以串联，而且顺序很重要</p>
+		<br />
+
+		<b>按键修饰符:</b>
+		<!-- 回车13时发生 -->
+		<input type="text" v-on:keyup.13="doSomething('submit')" placeholder="回车13时发生" />
+		<!-- 使用别名，回车时显示 -->
+		<input type="text" v-on:keyup.enter="doSomething('使用别名，回车时显示')" placeholder="使用别名，回车时显示">
+		<p>按键修饰符：.enter .tab .delete .esc .space .up .down .left .right</p>
+		<br />
+
+		<b>系统修饰符:</b>
+		<!-- alt+c 放开时发生 -->
+		<input type="text" v-on:keyup.alt.67="doSomething('系统修饰组合键')" placeholder="alt+c">
+		<!-- ctrl + 点击 时发生 -->
+		<button @click.ctrl="doSomething('alert')" placeholder="点击" type="text">click + ctrl</button>
+		<p>系统修饰符: .ctrl .alt .shift .meta .exact(精准修饰符(只有在指定键按下才触发，多按不触发))</p>
+		<br />
+
+		<b>鼠标按钮修饰符:</b>
+		<!-- 鼠标右键点击时发生 -->
+		<button @click.right="doSomething('鼠标右键点击')">鼠标右键点击</button>
+		<p>鼠标按钮修饰符: .left .right .middle</p>
+		<br /><hr /><br />
+		
+
+		<h2> v-model: </h2>
+		<!-- 侦听器(questiong发生变化时执行相应函数) -->
+		<span><input type="text" v-model="question" /></span>
+		<br />
+
+		<b>文本:</b>
+		<input v-model.number="message" placeholder="edit me">
+		<p>Message is : {{ message }}</p>
+		<br />
+
+		<b>复选框:</b>
+		<br />
+		<input type="checkbox" id="checkbox" v-model="checked">
+		<label for="checkbox">{{ checked }}</label>
+		<br />
+		<input type="checkbox" id="jack" value="jack" v-model="checkedNames">
+		<label for="jack">Jack</label>
+		<input type="checkbox" id="john" value="john" v-model="checkedNames">
+		<label for="john">John</label>
+		<input type="checkbox" id="mike" value="mike" v-model="checkedNames">
+		<label for="mike">Mike</label>
+		<span>Checked names: {{ checkedNames }}</span>
+		<br />
+		
+		<b><mark>?</mark>值绑定</b>
+		<br />
+		<br />
+
+		<b>修饰符:</b>
+		<p>修饰符: .lazy .number .trim</p>
+		<br /><hr /><br />
+		
+
+		<h2>component:</h2>
+		<div :style="{ fontSize: postFontSize + 'em' }">
+			<blog-post 
+			    v-for="post in posts"
+			    v-bind:key="post.id"
+			    v-bind:post="post"
+			    v-on:enlarge-text="onEnlargeText"
+			    v-model="searchText"
+			></blog-post>
+
+		</div>
+	</div>
+	
+	<script type="text/javascript">
+	
+		Vue.component('blog-post', {
+			model: {},
+			inheritAttrs: "",
+			computed: "",
+			data : function () {
+                return {
+                	count : 0
+                };
+			},
+			props : ['post', 'value'], //传递参数
+			template : `
+				<div class="blog-post">
+				    <h3>{{ post.title }}</h3>
+				    <button v-on:click="$emit('enlarge-text', 0.1)">Enlarge text</button>
+				    <div v-html="post.content"></div>
+				    <input
+				        v-bind:value="value"
+				        v-on:input="$emit('input', $event.target.value)"
+				    />
+				    <span>{{ value }}</span>
+				</div>
+			`
+		});
+
+		var vm = new Vue({
+			el : '#vm', //绑定节点
+			data : {
+				msg : '数据绑定', // 数据绑定
+				spanTest : '<span style="color: red;">T</span>', // 附加到<span>标签下
+				seen : true, // 控制是否显示
+				dynamicId : 'bind', // 绑定属性
+				i : 1, // 侦听函数
+				question : 'T', // 侦查检测
+				type : 'B', // v-if语句
+				loginType : 'username', // key语句
+				items : [ // v-for语句数组类型
+					{ message : 'Foo' },
+					{ message : 'Bar' }
+				],
+				object : { // v-for语句对象类型
+					firstName : 'Bob', 
+					lastName : 'Cat',
+					age : '17'
+
+				},
+				numbers : [ 1, 2, 3, 4, 5 ], // v-for过滤,
+				message : '', // v-model文本
+				checked : false, // v-model复选框
+				checkedNames : [], // v-model复选框
+				posts : [ // component
+					{ id: 1, title: 'My journey width Vue', content: 'first' },
+					{ id: 2, title: 'Blogging width Vue', content: 'second' },
+					{ id: 3, title: 'Why Vue is so fun', content: 'third' }
+				],
+				postFontSize: 0.8, // component
+				searchText: 'ss', // component
+			},
+			computed : { // 计算属性
+				computed : function () { // 设置属性
+					return this.msg.split('').reverse().join('');
+				},
+				fullName : {
+					get : function(){}, // 获取属性
+					set : function(){}, // 设置时执行函数
+				},
+				evenNumbers : function () {
+					return this.numbers.filter(function (number) {
+						return number % 2 === 0;
+					});
+				}
+
+			},
+			watch: { // 侦听器
+				question : function (newQuestion, oldQiestiong) {
+					alert(this.i++);
+				}
+			}, 
+
+			methods : { //定义方法
+				method : function () { //定义方法
+					return this.computed.split('').reverse().join('');
+				},
+				even : function(numbers) { // v-for过滤排序
+					return numbers.filter(function (number) {
+						return number % 2 === 0;
+					});
+				},
+				doSomething : function(name) {
+					alert(name);
+				},
+				onEnlargeText: function (enlargeAmount) {
+					this.postFontSize += enlargeAmount;
+				}
+			},
+
+			// 生命周期钩子
+			beforeCreate : function(){},
+			created : function(){},
+			beforeMount : function(){},
+			mounted : function(){},
+			beforeUpdate : function(){},
+			updated : function(){},
+			beforeDestroy : function(){},
+			destroyed : function(){}
+		});
+	</script>
+</body>
+</html>

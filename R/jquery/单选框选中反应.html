@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>单选框选中反应</title>
+		<script type="text/javascript" src="js/jquery-3.3.1.min.js" ></script>
+		<script>
+			$(document).ready(function(){
+				var $cr=$("#cr");
+				var cr=$cr[0];
+				$cr.click(function(){
+				    if(cr.checked){
+				    	alert("感谢你的支持！");
+				    }
+				})
+			})
+		</script>
+	</head>
+	<body>
+		<input type="checkbox" id="cr" /><label for="cr">我已经阅读上面的制度。</label>
+	</body>
+</html>

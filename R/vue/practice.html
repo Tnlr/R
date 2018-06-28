@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Practice</title>
+    <script type="text/javascript" src="js/vue.js"></script>
+    <style type="text/css">
+
+    </style>
+</head>
+
+<body>
+	<div id="test">
+		<text-document v-bind:title.sync="doc.title"></text-document>
+	</div>
+    <script type="text/javascript">
+		Vue.component('text-document',{
+			tempalet: `
+                    <text-document
+                        v-bind:title="doc.title"
+                        v-on:update:title="doc.tltle = $event"
+                    ></text-document>
+			    `
+		});
+    </script>
+</body>
+
+</html>

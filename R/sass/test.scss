@@ -1,0 +1,56 @@
+
+@import 'R';
+
+/* demo start */
+
+.demo { // demo
+	width: 50%;
+	margin: 0 auto;
+	border: 1px solid black;
+	ul {
+		overflow: hidden;
+		li {
+			height: 34px;
+			padding-left: 10px;
+			position: relative;
+			cursor: pointer;
+			border: 1px solid #000;
+			font-size: $font-size18;
+			width: $width3s;
+			float: left;
+			&:hover {
+				top: -1px;
+			}	
+		}
+	}
+	.sass & {
+		margin-bottom: 24px;
+	}
+} /* demo end */
+
+
+.button {
+	@include button-black-white((8px 15px));
+}
+
+.button1 {
+	-webkit-animation: greenPulse 2s infinite;
+	-moz-animation: greenPulse 2s infinite;
+	-o-animation: greenPulse 2s infinite;
+	animation: greenPulse 2s infinite;
+
+	padding: 8px 15px;
+}
+
+@-webkit-keyframes greenPulse {
+  from { background-color: #FF5C00; -webkit-box-shadow: 0 0 9px #333; }
+  50% { background-color: #D55500; -webkit-box-shadow: 0 0 18px #D55500; }
+  to { background-color: #FF5C00; -webkit-box-shadow: 0 0 9px #333; }
+}
+
+@include button-animation-construct (btn, #ff5c00, #d55500, #333, #d55500);
+
+.button2 {
+	@include button-animation(btn);
+	padding: 8px 16px;
+}

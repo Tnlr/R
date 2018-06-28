@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="..js/jquery-3.2.1.js" ></script>
+    <script type="text/javascript" src="wangEditor.min.js"></script>
+</head>
+<body>
+<div id="editor">
+    <p></p>
+</div>
+<button id="sub"></button>
+</body>
+<script>
+
+        var E = window.wangEditor
+        var editor = new E('#editor')
+        editor.customConfig.debug=true;
+        // 或者 var editor = new E( document.getElementById('editor') )
+        editor.customConfig.uploadFileName = 'picture'
+        editor.customConfig.uploadImgServer = 'http://192.168.1.104/yanhe/backstage/upload/add'
+        editor.customConfig.uploadImgHooks = {
+
+            success: function (xhr, editor, result) {
+            },
+            fail: function (xhr, editor, result) {
+                alert("图片上传失败");
+            },
+            error: function (xhr, editor) {
+                alert("图片上传错误");
+            },
+            timeout: function (xhr, editor) {
+                alert("图片上传超时");
+            },
+            customInsert: function (insertImg, result, editor) {
+                console.log(result);
+                var url = result.data
+                insertImg(url)
+            }
+        }
+        editor.create()
+
+        console.log(editor.txt.html())
+
+
+    $(function () {
+        $("#sub").click(function () {
+            alert(editor.txt.html());
+        })
+    })
+</script>
+</html>

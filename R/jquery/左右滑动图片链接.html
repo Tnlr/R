@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>左右滑动图片链接</title>
+		<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+		<style>
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			
+			img {
+				display: block;
+				width: 100px;
+				height: 100px;
+			}
+			
+			.all {
+				width: 300px;
+				margin: 0 auto;
+			}
+			
+			.header {
+				width: 292px;
+				background: black;
+				color: white;
+				height: 30px;
+				line-height: 30px;
+				padding: 5px;
+			}
+			
+			.header h2 {
+				display: inline-block;
+				font-size: 15px;
+				font-weight: normal;
+			}
+			
+			.header div {
+				display: inline-block;
+			}
+			
+			.header span {
+				display: inline-block;
+				height: 5px;
+				width: 5px;
+				background-color: white;
+				border-radius: 50%;
+				position: relative;
+				top: -3px;
+				cursor: pointer;
+			}
+			
+			.header span:hover {
+				background-color: orange;
+			}
+			
+			.header div:nth-child(3) {
+				margin-left: 20px;
+			}
+			
+			.header button {
+				color: white;
+				border: none;
+				background: black;
+				cursor: pointer;
+			}
+			
+			.header div:nth-child(4) {
+				float: right;
+				font-size: 13px;
+				cursor: pointer;
+			}
+			
+			.header button:hover,
+			.header div:nth-child(4):hover {
+				color: orange;
+			}
+			
+			.content {
+				width: 300px;
+				border: 1px solid black;
+				overflow: hidden;
+			}
+			
+			.content ul {
+				list-style: none;
+				width: 400px;
+				font-size: 0;
+				height: 120px;
+			}
+			
+			.content li {
+				display: inline-block;
+				font-size: 12px;
+				text-align: center;
+			}
+			
+			.content>div {
+				position: relative;
+				width: 400px;
+			}
+		</style>
+		<script>
+			$(function() {
+				$imgwidth = $(".content img").width();    //获取图片的宽度
+				$divmove = $(".content>div");    //获取移动的div
+				var control=true;    //主要用来控制左滑与右滑时发生特定事件
+				$(".left").click(function() {    //左按钮左滑事件
+					if(control==false){    //用来控制看不见的图片在左边时，让它放到右边去，这样才会出现好的滑动效果
+						$($divmove).css({"left":"0px"});
+						$(".content li:first").insertAfter(".content li:last");
+						control=true;
+					}
+					if(!($divmove.is(":animated"))) {    //当没有滑动时，使其向左滑动
+						$divmove.animate({
+							"left": "-=" + $imgwidth
+						}, "fast", function() {
+							$divmove.css({
+								"left": "0px"
+							});
+							$(".content li:first").insertAfter(".content li:last");
+						});
+					}
+				});
+				$(".right").click(function() {    //右按钮右滑事件
+					if(control==true){    //用来控制看不见的图片在右边时，让它放到左边去，这样才会出现好的滑动效果
+						$($divmove).css({"left":"-100px"});
+						$(".content li:last").insertBefore(".content li:first")
+						control=false;
+					}
+					if(!($divmove.is(":animated"))) {    //当其没有滑动时，使其向右滑动
+						$divmove.animate({
+								"left": "+=" + $imgwidth
+							}, "fast", function() {
+								$divmove.css({
+									"left": "-100px"
+								});
+								$(".content li:last").insertBefore(".content li:first")
+							});
+					}
+				});
+				
+//				function settime(){
+//					if(control==false){
+//						$($divmove).css({"left":"0px"});
+//						$(".content li:first").insertAfter(".content li:last");
+//						control=true;
+//					}
+//					if(!($divmove.is(":animated"))) {
+//						$divmove.animate({
+//							"left": "-=" + $imgwidth
+//						}, "fast", function() {
+//							$divmove.css({
+//								"left": "0px"
+//							});
+//							$(".content li:first").insertAfter(".content li:last");
+//						});
+//					}
+////					if(!($divmove.is(":animated"))) {
+//						t=setTimeout("settime()",2000);
+////					} 
+//				}
+//				
+//				setTimeout(settime(),2000);
+//				
+			})
+		</script>
+	</head>
+
+	<body>
+		<div class="all">
+			<div class="header">
+				<h2>导航栏</h2>
+				<div>
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+				<div>
+					<button class="left">上一页</button>
+					<button class="right">下一页</button>
+				</div>
+				<div>更多&gt;&gt;</div>
+			</div>
+			<div class="content">
+				<div>
+					<ul>
+						<!--<li><img src="img/2.jpg" alt="" />fourth</li>-->
+						<li><img src="img/a3.jpg" alt="" />first</li>
+						<li><img src="img/a1.jpg" alt="" />second</li>
+						<li><img src="img/a2.jpg" alt="" />third</li>
+						<li><img src="img/2.jpg" alt="" />fourth</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

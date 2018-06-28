@@ -1,0 +1,110 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box; }
+
+html,
+body {
+  width: 100%;
+  font-size: 16px; }
+
+ul {
+  list-style: none; }
+
+a {
+  text-decoration: none;
+  color: inherit; }
+
+p {
+  font-size: 1.5rem;
+  margin-bottom: 24px; }
+
+.top {
+  width: 100%;
+  border-bottom: 1px solid #E3E3E3;
+  background-color: #fff;
+  position: absolute;
+  top: 0;
+  left: 0; }
+  .top span {
+    font-size: 2rem;
+    line-height: 65px;
+    padding-left: 50px; }
+
+.all {
+  overflow: hidden;
+  margin-top: 65px;
+  min-width: 1202px; }
+
+.nav {
+  float: left;
+  width: 300px;
+  border-right: 1px solid #000;
+  padding-top: 30px; }
+  .nav li {
+    padding: 5px 0;
+    padding-left: 50px;
+    color: #777; }
+
+.content {
+  float: right;
+  margin-right: 200px;
+  border: 1px solid #000; }
+  .content .content_c {
+    width: 700px;
+    margin-bottom: 24px; }
+
+.button_display .black-white-bgc {
+  background-color: #777;
+  padding: 12px 0px; }
+  .button_display .black-white-bgc .button-black-white {
+    background-color: #000;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    padding: 8px 16px;
+    transition: all .2s;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px; }
+    .button_display .black-white-bgc .button-black-white:hover {
+      color: #000;
+      background-color: #fff; }
+  .button_display .black-white-bgc .button-black-white-fillet {
+    background-color: #000;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    padding: 8px 30px;
+    transition: all .2s;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-border-radius: 2em;
+    -moz-border-radius: 2em;
+    -o-border-radius: 2em;
+    border-radius: 2em; }
+    .button_display .black-white-bgc .button-black-white-fillet:hover {
+      color: #000;
+      background-color: #fff; }
+  .button_display .black-white-bgc .button-black-white-medium {
+    background-color: #000;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    padding: 4px 8px;
+    transition: all .2s;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px; }
+    .button_display .black-white-bgc .button-black-white-medium:hover {
+      color: #000;
+      background-color: #fff; }
+
+/*# sourceMappingURL=component_display.css.map */

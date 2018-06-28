@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-3.3.1.min.js" ></script>
+		<style>
+			textarea {
+				resize: none;
+				height: 100px;
+			}
+			span {
+				cursor: pointer;
+				display: inline-block;
+				padding: 3px 5px;
+				margin: 12px 15px;
+				background-color: paleturquoise;
+				border:1px dashed red;
+				/*border-style: groove;*/
+			}
+			
+			span:hover {
+				background: palegreen;
+			}
+		</style>
+		<script>
+		    $(function(){
+		    	var $comment=$("#comment");  //获取文本框
+		    	
+		    	$(".bigger").click(function(){    //为放大按钮附加点击事件
+		    		if($comment.height()<500){    //文本框高度小于500时运行
+		    			$comment.animate({"height":"+=50"},400);    //高度增加
+		    		}
+		    	})
+		    	$(".smaller").click(function(){    //为缩小按钮附加点击事件
+		    		if($comment.height()>50){    //文本框高度大于400时运行
+		    			$comment.animate({    //高度减小
+		    				"height":"-=50"
+		    			},400);
+		    		}
+		    	})
+		    	
+		    })
+		</script>
+	</head>
+	<body>
+		<form>
+			<div>
+				<span class="bigger">放大</span>
+				<span class="smaller">缩小</span>
+			</div>
+			<div>
+				<textarea id="comment" row="8" cols="20">
+					多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框
+				</textarea>
+			</div>
+		</form>
+	</body>
+</html>

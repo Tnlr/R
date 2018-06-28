@@ -1,0 +1,92 @@
+@import 'R';
+
+p {
+	font-size: $font-size24;
+	margin-bottom: 24px;
+}
+
+
+// header start
+
+.top {
+	width: 100%;
+	border-bottom: 1px solid #E3E3E3;
+	background-color: #fff;
+	position: absolute;
+	top: 0;
+	left: 0;
+	span {
+		font-size: $font-size32;
+		line-height: 65px;
+		padding-left: 50px;
+	}
+}
+
+// header end
+
+
+// main start
+
+.all {
+	overflow: hidden;
+	margin-top: 65px;
+	min-width: 1202px;
+}
+
+// nav
+
+.nav {
+	float:left;
+	width: 300px;
+	border-right: 1px solid #000;
+	padding-top: 30px;
+	li {
+		padding: 5px 0;
+		padding-left: 50px;
+		color: #777;
+	}
+}
+
+// nav end
+
+
+// content start
+
+// button start
+
+.content {
+	float: right;
+	margin-right: 200px;
+	border: 1px solid #000;
+	.content_c {
+		width: 700px;
+		margin-bottom: 24px;
+	}
+}
+
+.button_display {
+	
+	.black-white-bgc {
+		background-color: #777;
+		padding: 12px 0px;
+
+		.button-black-white {
+			@include button-black-white((8px 16px));
+		}
+
+		.button-black-white-fillet {
+			@include button-black-white((8px 30px));
+			@include compatible(border-radius, 2em);
+		}
+		
+		.button-black-white-medium {
+			@include button-black-white((4px 8px));
+		}
+	}
+}
+
+// button end
+
+// content end
+
+// main end

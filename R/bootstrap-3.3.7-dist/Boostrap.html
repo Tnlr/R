@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<!--兼容移动端
+			width自适应宽度
+			initial-scale使页面1:1
+			maximum-scale与user-scalable禁止缩放
+		-->
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+		<meta name="description" content="Practice-练习">
+		<meta name="keywords" content="Practice">
+		<title>Bootstrap</title>
+		<link rel="shortcut icon" href="s" type="image/x-icon" />
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<script type="text/javascript" src="../jquery/js/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<style type="text/css">
+			
+			a {
+			    color: #F3726D;	
+			}
+			
+			a:hover {
+			    border-bottom: 1px solid #F3726D;
+				color: #F3726D;
+			    text-decoration: none;
+			}
+			
+			.button_a {
+				background: #F4645F;
+				color: #fff;				
+				padding:  8px 15px;				
+				transition: .2s background;
+			}
+			
+			.button_a:hover {
+			    background: #000;
+				border: none;
+				color: #fff;
+			}
+			
+			/*头部开始*/
+			
+			.header {
+				background-color: #F3726D;
+				padding-top: 62px;
+			}
+			
+			    /*头部标题开始*/
+			
+				.title_div {
+					margin: 0 0 30px 0;
+				}
+				
+				.header_title {
+					color: white;
+					font-size: 3em;
+				    text-align: center;
+				}
+			
+			    /*头部标题结束*/
+			
+			    /*头部导航开始*/
+			
+				.nav_header {
+					margin-bottom: 30px;
+					text-align: center;
+				}
+				
+				.nav_header a {
+					border: 1px solid #f1362f;
+					border-radius: 0;
+					color: #fff;
+					padding:  8px 15px;
+				}
+				
+				@media only screen and (max-width:414px ) {
+					.nav_header {
+					    display: none;
+					}
+				}
+			    /*头部导航结束*/
+			
+			/*头部结束*/
+			
+			
+			/*导航开始*/
+			
+			.phone_head_nav {
+  				display: none;				
+			}
+			
+			.phone_head_nav span{
+				display: block;
+				font-size: 24px;
+				margin: 20px 0;
+				text-align: center;
+			}
+			
+			.home_nav {
+			    text-align: center;	
+			}
+			
+			.home_nav ul {
+			    display: inline-block;
+			    vertical-align: top;
+			}			
+			
+			.home_nav li a {
+				color: #505050;
+				padding: 18px 20px;
+			}
+			
+			.Packagist_nav {       /*Packagist导航加粗*/
+				font-weight: bold;
+			}
+			
+			.home_nav li a:hover {
+				background: none;
+				border: none;
+			    color: #F5726D;	
+			}
+			
+			
+			@media only screen and (max-width: 414px) {
+				
+				.phone_head_nav {
+				    display: block;	
+				}
+				
+				.home_nav {
+				    display: none;
+				    overflow: hidden;
+				    text-align: left;
+				}
+				
+				.home_nav li {
+			        float: none;
+			    }
+			}
+			/*导航结束*/
+			
+			/*主页内容开始*/
+			
+			.content {
+			    background-color: #EBEBEB;	
+			}
+			
+			@media only screen and (max-width: 414px) {
+				.content {
+				    padding: 0;	
+				}
+			}
+			
+			    /*内容开始*/
+			    
+				.left_content {
+					margin: 30px 0;
+					overflow: hidden;
+				}    
+			    	
+			    	/*内容框开始*/
+
+					.content_box {
+					    background: #fff;
+					    float: right;
+					    margin: 0 0 30px 0;
+					    padding: 20px 30px 40px 30px;
+					    text-align: center;
+					}
+					
+					.header_content_box a {
+						color: #000000;
+						font-size: 30px;
+						font-weight: normal;
+					}
+					
+					.header_content_box a:hover {
+						border: none;
+						text-decoration: none;	
+					}
+
+					.content_box sub {
+						color: #959595;
+					    font-size: 14px;	
+					}
+					
+					.content_box sub a {
+					    font-size: 16px;	
+					    margin-right: 5px;
+					}
+					
+					.content_box img {
+						margin: 40px 0;
+						width: 100%;
+					}
+					
+					.content_box p {
+					    font-family: "Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3","WenQuanYi Micro Hei","Microsoft YaHei UI","Microsoft YaHei",sans-serif;
+					    font-size: 18px;	
+						line-height: 30px;
+						text-align: left;
+					}
+					
+					.read_content_box {
+						float: left;
+						margin: 20px 0;
+						text-align: left;
+					}
+					
+					hr {
+					    clear: both;	
+					}
+
+					/*内容框结束*/
+
+			        /*按钮开始*/
+
+					.pageing button {
+						background: #F4645F;
+						border: none;
+						color: #fff;
+						padding: 8px 12px;
+					}
+
+					.pageing .info_pageing {
+						background: #F4645F;
+						color: #fff;
+						margin: 0 5px 0 1px;
+						padding: 11px 12px;
+						vertical-align: middle;
+					}
+
+
+                    .pageing .info_pageing i {
+                    	font-style: normal;
+                    	padding: 0 5px;
+							
+                    }
+					
+                    .pageing button:hover {
+						color: #fff;
+                    }
+
+                    .pagegin button:active {
+                    	border: none;
+                    	color: #fff;
+                    }
+
+			       /*按钮结束*/
+			   
+			    /*内容结束*/
+			
+			    /*右侧导航开始*/
+			
+				.nav_content {
+				    margin: 30px 0;	
+				}
+			
+			        /*社区开始*/
+			        
+			        .community_nav_content {
+			            background: #fff;
+			        	padding: 20px;
+			        }
+			        
+			        .header_community_nav h4 {
+			        	border-bottom: 1px solid #F3726D;
+			        	padding: 0;
+			        }
+
+			        .header_community_nav div {
+			            border-bottom: 1px solid #EBEBEB;	
+			        	font-size: 1.5em;
+			        }
+			        
+			        .content_community_nav {
+			            clear: both;	
+			        	padding: 10px 0;
+			        }
+			        
+			        .content_community_nav p{
+						font-size: .9em;			        	
+			        }
+			        
+			        .content_community_nav div span {
+			            color: #F3726D;	
+			            vertical-align: middle;
+			        }
+			        
+			        /*社区结束*/   
+			
+			    /*右侧导航结束*/
+			
+			/*主页内容结束*/
+		</style>
+		<script type="text/javascript">
+			$(function(){
+				$(".phone_head_nav").click(function(){
+				    $(".home_nav").slideToggle();
+				});
+			});
+			
+		</script>
+	</head>
+
+	<body>
+		<header class="container-fluid header">                                <!--头部-->
+			<div class="row">
+				<div class="col-md-12 title_div">                              <!--头部标题-->
+					<h1 class="header_title">为WEB艺术家创造的PHP框架</h1>
+				</div>
+				<div class="col-md-12 nav_header">                             <!--头部导航-->
+					<a href="#" class="btn button_a" target="_blank">5.6文档</a>
+					<a href="#" class="btn button_a" target="_blank">5.5文档</a>
+					<a href="#" class="btn button_a" target="_blank">5.4文档</a>
+					<a href="#" class="btn button_a" target="_blank">5.3文档</a>
+					<a href="#" class="btn button_a" target="_blank">5.2文档</a>
+					<a href="#" class="btn button_a" target="_blank">5.1文档</a>
+					<a href="#" class="btn button_a" target="_blank">5.0文档</a>
+					<a href="#" class="btn button_a" target="_blank">4.2中文文档</a>
+					<a href="#" class="btn button_a" target="_blank">4.1中文文档</a>
+					<a href="#" class="btn button_a" target="_blank">4.0中文文档</a>
+					<a href="#" class="btn button_a" target="_blank">Lumen中文文档</a>
+				</div>
+			</div>
+		</header>
+		<nav class="container-fluid">                                          <!--导航-->
+			<div class="row">
+				<div class="col-md-12 phone_head_nav">
+					<span class="glyphicon glyphicon-menu-hamburger"></span>
+				</div>
+				<div class="col-md-12 home_nav">
+					<ul class="nav nav-pills">
+						<li class=""><a href="#" class=""><attr title="首页">首页</attr></a></li>
+						<li class=""><a href="#" class=""><attr title="Laravel中文文档">Laravel中文文档</attr></a></li>
+						<li class=""><a href="#" class="Packagist_nav"><attr title="Packagist中国镜像">Packagist中国镜像</attr></a></li>
+						<li class=""><a href="#" class=""><attr title="Composer中文文档">Composer中文文档</attr></a></li>
+						<li class=""><a href="#" class=""><attr title="PHP中文文档">PHP中文文档</attr></a></li>
+						<li class=""><a href="#" class=""><attr title="PHP编程之道">PHP编程之道</attr></a></li>
+						<li class=""><a href="#" class=""><attr title="问答社区">问答社区</attr></a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<section class="container-fluid content">                              <!--主页内容-->
+				<div class="col-md-7 left_content">                            <!--内容-->
+
+					<div class="col-md-9 content_box">                         <!--Laravel5.6-->
+						<div class="header_content_box"><a href="#" target="_blank">Laravel 5.6 版本正式发布</a></div>
+						<sub>作者：<a href="#" target="_blank">王赛</a>·2018年02月08日</sub>
+						<a href="#" target="_blank">
+							<img src="img/laravel-5.6.png" alt="Laravel 5.6版本正式发布" />
+						</a>
+						<p>Laravel 5.6 是继 5.5 之后 Laravel 官方发布的最新版本。此版本包含众多新特性，接下来我们说一说几个重要的特性。如需查看完成的发布日志，请点击
+							<a href="#" target="_blank">这里</a> 。
+						</p>
+						<a class="button_a read_content_box" href="#">阅读全文</a>
+						<hr />
+					</div>
+
+					<div class="col-md-9 content_box">                         <!--Laravel5.5预告-->
+						<h2><a href="#" target="_blank">Laravel 5.5 将是下一个 LTS 版本，预计 7/8 月份发布</a></h2>
+						<sub>作者：<a href="#" target="_blank">王赛</a>·2017年02月20日</sub>
+						<a href="#" target="_blank">
+							<img src="img/0540baaed781628b02aac992d1c8f.png" alt="Laravel 5.6版本正式发布" />
+						</a>
+						<p>Laravel 5.6 是继 5.5 之后 Laravel 官方发布的最新版本。此版本包含众多新特性，接下来我们说一说几个重要的特性。如需查看完成的发布日志，请点击
+							<a href="#" target="_blank">这里</a> 。
+						</p>
+						<a class="button_a read_content_box" href="#">阅读全文</a>
+						<hr />
+					</div>
+
+					<div class="col-md-6 before_pageing"></div>               <!--翻页按钮-->
+					<div class="col-md-5 pageing">                                        
+						<button type="submit">
+							<span class="glyphicon glyphicon-chevron-left"></span>
+						</button>
+						<span class="info_pageing">
+							第<i>1</i>页&nbsp;/&nbsp;共<i>7</i>页
+						</span>
+						<button type="submit">
+							<span class="glyphicon glyphicon-chevron-right"></span>
+						</button>
+					</div>
+				</div>
+				
+				<div class="col-md-5 nav_content">                                 <!--右侧导航-->
+					<div class="col-md-6 community_nav_content">                   <!--社区-->
+						<div class="header_community_nav">
+						    <h4 class="col-md-4">社区</h4>
+						    <div class="col-md-8" class>&nbsp;</div>
+					    </div>
+					    <div class="content_community_nav">
+					    	<p>QQ群：462694081</p>
+					    	<div>
+					    		<span class="glyphicon glyphicon-cloud"></span>
+					    		<a href="#" target="_blank"> <attr title="Laravel中文问答社区">问答社区</attr>  </a>
+					    	</div>
+					    </div>
+					</div>
+				</div>
+		</section>
+	</body>
+
+</html>

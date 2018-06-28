@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>Component display</title>
+	<link rel="stylesheet" type="text/css" href="css/component_display.css">
+	<script type="text/javascript" src="js/vue.js"></script>
+	<script type="text/javascript" src="js/rcomponent.js"></script>
+	<script type="text/javascript" src="js/component_display.js"></script>
+</head>
+<body>
+	<div class="top"><span>R</span></div> <!-- 顶部框 -->
+
+	<div class="all" id="all">
+		<div class="nav">
+			<nav-vertical v-bind:lists="navlists"></nav-vertical>
+		</div> <!-- nav -->
+		
+		<div class="content">
+			<div class="content_c">
+				<div class="button_display">
+					<p>按钮</p>
+					<div class="black-white-bgc">
+						<button class="button-black-white">Button</button>	
+						<button class="button-black-white-fillet">Button</button>
+						<button class="button-black-white-medium">Button</button>
+					</div>
+					
+				</div>
+			</div>
+			
+		</div> <!-- content -->
+	</div><!-- main -->
+
+
+	<script type="text/javascript">
+		var vm = new Vue({
+			el : '#all',
+			data : {
+				navlists : [
+					{ content : '主页', href : '#all' },
+					{ content : '按钮', href : '#all' },
+					{ content : '分页', href : '#all' },
+					{ content : '轮播', href : '#all' }
+
+				]
+			}
+		});
+	</script>
+</body>
+</html>
