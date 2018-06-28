@@ -1,1 +1,1 @@
-R：用于存放练习代码
+R: practice code
