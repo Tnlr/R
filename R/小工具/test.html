@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>W3Cschool在线教程(w3cschool.cn)</title>
+<style>
+.droptarget {
+    /*float: left; */
+    width: 100px; 
+    height: 35px;
+    margin: 15px;
+    padding: 10px;
+    border: 1px solid #aaaaaa;
+}
+
+.dragf {
+	border: 1px solid black;
+	height: 50px;
+}
+</style>
+</head>
+<body>
+
+<p>在两个矩形框中来回拖动 p 元素:</p>
+<div class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)">
+	<p ondragstart="dragStart(event)" draggable="true" id="dragtarget">拖动我!</p>
+</div>
+	
+<div class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<p id="demo"></p>
+<br />
+
+<div id="test" class="dragf">
+	<div id="drage" draggable="true">This is drag!</div>
+</div>
+
+<div class="dragf"></div>
+
+<script>
+
+document.body.onclick = function (event) {
+	console.log(event.screenX, event.screenY);
+};
+
+var e = document.getElementsByClassName('dragf');
+var el = document.getElementById('drage');
+
+el.addEventListener('dragstart', function (e) {
+	e.dataTransfer.setData('Text', e.target.id);
+});
+
+for (var item in e) {
+	if(item === 'length') {
+		break;
+	}
+
+	e[item].addEventListener('drop', function (event) {
+		event.preventDefault();
+		event.target.appendChild(document.getElementById(event.dataTransfer.getData('Text')));
+	});
+
+	e[item].addEventListener('dragover', function (event) {
+		event.preventDefault();
+	});
+}
+
+
+function dragStart(event) {
+    event.dataTransfer.setData("Text", event.target.id);
+}
+
+
+function allowDrop(event) {
+    event.preventDefault();
+}
+function drop(event) {
+    event.preventDefault();
+    var data = event.dataTransfer.getData("Text");
+    event.target.appendChild(document.getElementById(data));
+}
+</script>
+
+</body>
+</html>

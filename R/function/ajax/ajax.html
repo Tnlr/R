@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="ajax.js"></script>
+	<!-- <script type="text/javascript" src="../../js/jquery.js"></script> -->
+</head>
+<body>
+
+	<form id="myform" name="myform">
+		<input id="town_id" type="text" name="town_id">
+		<span id="test">Ssssssss</span>
+	</form>
+
+<script type="text/javascript">
+
+	window.onload = function () {
+
+		document.getElementById('test').onclick  = function () {
+
+			var formdata = new FormData(document.getElementById('myform'));
+			Rajax.ar({
+				url : 'http://192.168.1.108/yanhe/backstage/fallout/v/list',
+				data : formdata,
+
+				success : function (data) {
+					console.log(data);
+					
+				}
+			});
+			return false;
+		};
+
+		
+	};
+	
+</script>	
+</body>
+</html>

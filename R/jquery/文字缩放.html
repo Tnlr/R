@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>文字缩放</title>
+		<script type="text/javascript" src="js/jquery-3.3.1.min.js" ></script>
+		<script>
+			$(function(){
+				$("button").click(function(){
+					var thisFt=$("p").css("font-size");
+					var textFontSize=parseFloat(thisFt);
+					var thisDw=thisFt.slice(-2);
+					var cName=$(this).attr("class");
+					if(cName=="bigger" && textFontSize<64){
+						textFontSize+=2;
+					}else if(cName=="smaller" && textFontSize>12){
+						textFontSize-=2;
+					}
+					$("p").css("font-size",textFontSize+thisDw);
+				});
+			})
+		</script>
+	</head>
+	<body>
+		<button class="bigger">放大</button>
+		<button class="smaller">缩小</button>
+		<p class="text">
+			This is some text.This is some text.This is some text.This is some text.This is some text.This is some text.This is some text.This is some text.This is some text.This is some text.This is some text.This is some text.This is some text.
+		</p>
+	</body>
+</html>

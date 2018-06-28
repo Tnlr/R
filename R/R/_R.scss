@@ -1,0 +1,90 @@
+// compatible
+
+@mixin compatible($key, $value) {
+	-webkit-#{$key}: $value;
+	-moz-#{$key}: $value;
+	-o-#{$key}: $value;
+	#{$key}: $value;
+}
+
+@mixin keyframes($animationName) {
+	@-webkit-keyframes #{$animationName} {
+		@content;
+	}
+	@-moz-keyframes #{$animationName} {
+		@content;
+	}
+	@-o-keyframes #{$animationName} {
+		@content;
+	}
+	@keyframes #{$animationName} {
+		@content;
+	}
+}
+
+// font-size
+$font-size14: 0.875rem;
+$font-size18: 1.125rem;
+$font-size24: 1.5rem;
+
+// percent width
+$width3s: 33.33333333%;
+$width4s: 25%;
+$width5s: 20%;
+$width6s: 16.66666667%;
+$width7s: 14.28571429%;
+$width8s: 12.5%;
+$width9s: 11.11111111%;
+$width10s: 10%;
+$width11s: 9.09090909%;
+$width12s: 8.33333333%;
+
+// main
+
+* {
+	margin: 0;
+	padding: 0;
+	@include compatible(box-sizing, border-box);
+}
+
+html,
+body {
+	width: 100%;
+	font-size: 16px;
+}
+
+ul {
+	list-style: none;
+}
+
+// button
+
+// button 1
+@mixin button-black-white ($padding) {
+	background-color: #000;
+	border: none;
+	color: #fff;
+	cursor: pointer;
+	padding: $padding;
+	transition: all .2s;
+	@include compatible(border-radius, 5px);
+	&:hover {
+		color: #000;
+		background-color: #fff;
+	}
+}
+
+// button 2
+@mixin button-animation-construct ($name, $bc, $tc, $bsc, $tsc) {
+	@include keyframes ($name) {
+		from { background-color: $bc; @include compatible(box-shadow, (0 0 9px $bsc)); }
+		50% { background-color: $tc;  @include compatible(box-shadow, (0 0 9px $tsc)); }
+		to { background-color: $bc;  @include compatible(box-shadow, (0 0 9px $bsc)); }
+	}
+}
+
+@mixin button-animation ($name) {
+	@include compatible(animation, ($name 2s infinite));
+}
+
+

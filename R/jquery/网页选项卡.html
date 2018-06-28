@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>网页选项卡</title>
+		<script type="text/javascript" src="js/jquery-3.3.1.min.js" ></script>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			.tab {
+				width: 200px;
+				height: 300px;
+				margin: 0 auto;
+				transform: translateY(100px);
+				/*border: 1px solid gold;*/
+			}
+			
+			.tab ul {
+				list-style-type: none;
+				/*border: 1px solid red;*/
+				overflow: hidden;
+				width: 100%;
+			}
+			
+			.tab ul li {
+				float: left;
+				padding: 5px;
+				border: 1px solid #555555;
+				cursor: pointer;
+				margin: 0 5px;
+			}
+			
+			.tab-highlight {
+				background-color:pink;
+			}
+			
+			.tab-menu {
+				height: 40px;
+				overflow: hidden;
+			}
+			
+			.tab-content {
+				border: 1px solid peachpuff;
+				height: 100px;
+			}
+			
+			.tab-content div:nth-child(2),
+			.tab-content div:last-child {
+				display: none;
+			}
+			
+			
+		</style>
+		<script>
+			$(function(){
+				$(".tab-menu ul li").click(function(){
+					$(this).addClass("tab-highlight").siblings().removeClass("tab-highlight");	
+					var index=$(this).index();
+					$(".tab-content>div:eq("+index+")").css("display","block").siblings().css("display","none");
+				})
+			})
+		</script>
+	</head>
+	<body>
+		<div class="tab">
+			<div class="tab-menu">
+				<ul>
+					<li class="tab-highlight">时事</li>
+					<li>体育</li>
+					<li>新闻</li>
+				</ul>
+			</div>
+			<div class="tab-content">
+				<div>时事</div>
+				<div>体育</div>
+				<div>新闻</div>
+			</div>
+		</div>
+	</body>
+</html>

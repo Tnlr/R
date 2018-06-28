@@ -1,0 +1,48 @@
+body,
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font: normal 100% Helvetica, Arial, sans-serif;	
+}
+
+.all {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+/*用户内容*/
+
+.head-nav {
+    width: 13.7%;
+    height: 24%;
+    float: left;
+    background: #006ac6;
+    box-sizing: border-box;
+}
+
+    /*头像部分*/
+   
+.head {
+    /*width: 70%;
+    height: 70%;	*/
+    /*background: #0a8cfd;	
+    border-radius: 50%;*/
+    /*margin: 15%;
+    padding: 15%;*/
+}
+
+.head-img img {
+   
+}
+
+    /*用户信息*/
+
+/*主体部分*/
+
+.content {
+    width: 86.3%;
+}

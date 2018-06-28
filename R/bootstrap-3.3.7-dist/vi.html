@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<title>vi is a contextual video platform | video intelligence</title>
+	<meta name="description" content="Video Intelligence drives brand objectives with a contextually relevant video ad experience">
+	<meta name="keywords" conten="mobile video ssp, mobile app monetization, mobile web monetization, vi stories, mobile video inventory, mobile video advertising, mobile advertising, video intelligence, video intelligence AG, self-serve, monetization, vi.ai, vi">
+	<link rel="shortcut icon" href="img/vi/favicon.png">
+	<link rel="stylesheet" type="text/css" href="../css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<style type="text/css">
+		* {
+		  -webkit-box-sizing: border-box;
+		     -moz-box-sizing: border-box;
+		          box-sizing: border-box;
+		          margin: 0;
+		          padding: 0;
+		}
+		
+		body {
+			background: #000;
+		}
+
+
+		/*头部开始*/
+		
+		.header-top {
+			background: #fff;
+		}
+
+		/*logo开始*/
+
+		.header-logo {
+			float: left;
+			margin: 2% 0;
+		}
+		
+		.sr-logo-header {
+			display: none;
+		}
+
+		@media screen and (max-width: 767px) {
+			.header-logo {
+				margin: 3% 0;
+				width: 33%;
+			}
+
+			.sr-logo-header {
+				display: block;
+				float: right;
+				margin-top: 7%;
+			}
+
+			.sr-logo-header span {
+				font-weight: bold;
+				margin-right: 20px;
+			}
+		}
+
+		/*logo结束*/
+		
+		/*网站导航开始*/
+
+		.nav-div {
+			float: right;
+			margin: 4% 0 0 0;
+		}
+		
+		.nav-ul-div>li {
+			display: inline-block;
+			font-weight: bold;
+			margin: 0 15px;
+		}
+
+		.nav-ul-div>li>a {
+			color: #000;
+			font-size: 16px;
+		}
+
+		.nav-ul-div>li>a:hover {
+			text-decoration: none;
+		}
+
+		.login-li {
+			margin-left: 1%;
+		}
+	
+		.login-li>a{
+			background-color: #FFF200;
+			border-radius: 20px;
+			display: inline-block;
+			height: 36px;
+			line-height: 36px;
+			text-align: center;
+			transition: all .2s;
+			width: 98px;
+		}
+
+		.login-li>a:hover {
+			background: #000;
+			color: #FFF200;
+		}
+		
+		.nav-ul-div .sr-login-li {
+			display: none
+		}
+
+		@media screen and (max-width: 767px) {
+			.nav-div {
+				display: #fff;
+				display: none;
+				right: 0;
+				top: 36px;
+
+			}
+
+			.nav-ul-div>li {
+				width: 100%;
+				margin: 2px 0;
+			}
+			
+			.nav-ul-div>li>a {
+				float: right;
+				margin-right: 20px;
+				font-weight: normal;
+			}
+			
+			.nav-ul-div .login-li {
+				display: none;
+			}
+			
+			.sr-login-li {
+				display: inline-block;
+			}
+
+		}
+
+		/*网站导航结束*/
+
+		/*头部结束*/
+
+
+		/*主页内容开始*/
+
+		.content-div {
+			background: url(img/vi/circle-1.svg) no-repeat 0 -90px;
+			height: 650px;
+		}
+		
+		.content-title-div {
+			color: #fff;
+			margin: 10% 0;
+		}
+
+		.content-title-div h1 {
+			font-weight: 600;
+			font-size: 65px;
+		}
+		
+		.content-title-div h2{
+			font-size: 50px;
+			margin: 8% 0 0 0;
+			line-height: 60px;
+			white-space: pre-line;
+		}
+		
+		.content-img-div {
+			margin: 60px 0 0 0;
+			height: 700px;
+			width: 430px;
+		}
+
+		@media screen and (max-width: 767px){
+
+			.content-div {
+				background: url(img/vi/circle-1.svg) no-repeat -500px -308px;
+				height: auto;
+			}
+			.content-title-div h1 {
+				font-size: 36px;
+				margin-top: 15%;
+				text-align: center;
+			}
+
+			.content-title-div h2 {
+				font-size: 24px;
+				line-height: 30px;
+				margin-top: 10px;
+				text-align: center;
+			}
+
+			.content-img-div {
+				display: none;
+			}
+		}
+
+		/*主页内容结束*/
+	</style>
+	<script type="text/javascript">
+		$(function(){
+			$('.sr-logo-header span').click(function(){
+				console.log('this');
+				$('.nav-div').slideToggle(200);
+			});
+		});
+	</script>
+</head>
+<body>
+	<div class="header-top"> <!--头部开始-->
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 div-header-top">
+					<div class="header-logo">
+						<span>
+							<img src="img/vi/vi_logo.svg" class="img-responsive" alt="vi_logo">
+						</span>
+					</div>
+					<div class="sr-logo-header">
+						<span>MENU</span>
+						<span class="glyphicon glyphicon-th-list"></span>
+					</div>
+					
+					<div class="nav-div">
+						<ul class="nav-ul-div">
+							<li><a href="#">About vi</a></li>
+							<li><a href="#">Advertisers</a></li>
+							<li><a href="#">Publishers</a></li>
+							<li><a href="#">News</a></li>
+							<li class="login-li"><a href="#">Login</a></li>
+							<li class="sr-login-li"><a href="#">Login</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div> <!--头部结束-->
+
+	<div class="content-div">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 content-title-div">
+					<h1>vi is a contextual video platform</h1>
+					<h2>We connect publishers，&#10;content providers and brands through video storytelling</h2>
+				</div>
+				<div class="col-md-4">
+					<div class="content-img-div">
+						<img src="img/vi/hand_animation_2.gif" alt="hand_animation" class="img-responsive">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div> <!-- 主页内容结束 -->
+</body>
+</html>

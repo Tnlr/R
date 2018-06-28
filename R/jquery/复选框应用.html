@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>复选框应用</title>
+		<script type="text/javascript" src="js/jquery-3.3.1.min.js" ></script>
+		<style>
+			form {
+				width: 200px;
+				margin: 0 auto;
+				position: relative;
+				top: 300px;
+			}
+		</style>
+		<script>
+			$(function(){
+				$("#checkedAll").click(function(){    //全选
+					$('[name=items]:checkbox').prop('checked',true);
+				})
+				
+				$("#checkedNo").click(function(){    //全不选
+					$('[name=items]:checkbox').prop('checked',false);
+				})
+				
+				$("#checkedRev").click(function(){
+					$('[name=items]:checkbox').each(function(){
+//					    this.checked=!this.checked;
+                    $(this).prop('checked',!$(this).prop("checked"));
+					})
+				})
+			})
+		</script>
+		<style>
+			input {
+				border: 1px solid red;
+			}
+			
+			input:active {
+				background: #008000;
+			}
+		</style>
+	</head>
+	<body>
+		<form>
+			你爱好的运动是什么？<br />
+			<input type="checkbox" name="items" value="足球" />足球
+			<input type="checkbox" name="items" value="篮球" />篮球
+			<input type="checkbox" name="items" value="羽毛球" />羽毛球
+			<input type="checkbox" name="items" value="乒乓球" />乒乓球
+			<br />
+			<input type="button" name="items" value="全选" id="checkedAll"/>
+			<input type="button" name="items" value="全不选" id="checkedNo" />
+			<input type="button" name="items" value="反选" id="checkedRev" />
+			<input type="submit" name="items" value="提交" />
+			
+		</form>
+	</body>
+</html>

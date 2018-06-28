@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>echarts practice</title>
+	<script type="text/javascript" src="js/echarts.js"></script>
+</head>
+<body>
+	<!-- 折线图 -->
+	<div id="zhe" style="width: 600px;height: 400px;"></div>
+	<!-- 饼状图 -->
+	<div id="bing" style="width:600px;height:400px"></div>
+	<!-- 树状图 -->
+	<div id="main" style="width: 600px;height: 400px"></div>
+	<script type="text/javascript">
+		//折线图
+		echarts.init(document.getElementById('zhe')).setOption({
+			title: { text: 'Line Chart' },
+			tooltip: {},
+			toolbox: {
+				feature: {
+					dataView: {},
+					saveAsImage: {
+						pixelRatio: 2
+					},
+					restore: {}
+				}
+			},
+			xAxis: {},
+			yAxis: {},
+			series: [{
+				type: 'line',
+				smooth: true,
+				data: [ [12, 5], [24, 20], [36, 36], [48, 10], [60, 10], [72, 20] ]
+			}]
+		});
+
+		//饼状图
+		echarts.init(document.getElementById('bing')).setOption({
+			title: { text: 'A-B-C' },
+			backgroundColor: '#2c343c',
+			tooltip : {
+			    trigger: 'item',
+			    formatter: "{a} <br/>{b} : {c} ({d}%)"
+			},
+			series: {
+				type: 'pie',
+				radius: '55%',
+				roseType: 'angle',
+				data: [
+					{ name: 'A', value: 1212 },
+					{ name: 'B', value: 2323 },
+					{ name: 'C', value: 1919 }
+				],
+				itemStyle: {
+					normal: {
+						shadowBlur: 200,
+						shadowColor: 'rgba(0, 0, 0, 0.5)'
+					}
+				},
+			}
+		});
+
+		//树状图
+		var myChart = echarts.init(document.getElementById('main'));
+
+		var option = {
+			title: {
+				text: 'ECharts 入门实例'
+			},
+			tooltip: {},
+			legend: {
+				data: ['销量']
+			},
+			xAxis: {
+				data: [ "衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子" ]
+			},
+			yAxis: {},
+			series: [{
+				name: "销量",
+				type: "bar",
+				data: [5, 20, 36, 10, 10, 20]
+			}]
+		};
+
+		myChart.setOption(option);
+	</script>
+</body>
+</html>

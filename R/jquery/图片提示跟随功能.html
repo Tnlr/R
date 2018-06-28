@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>图片提示跟随功能</title>
+		<script type="text/javascript" src="js/jquery-3.3.1.min.js" ></script>
+		<script>
+			$(function(){
+				var x=10;
+				var y=10;
+				$("img").mouseover(function(e){
+					this.myTitle=this.title;
+					this.title="";
+					prompt="<div class='prompt'>"+this.myTitle+"</div>"
+					$("img").after(prompt);
+					$(".prompt")
+					    .css({
+					    	"position": "absolute",
+					    	"top": (e.pageY+y)+"px",
+					    	"left": (e.pageX+x)+"px"
+					    }).show("fast");
+				}).mouseout(function(){
+					this.title=this.myTitle;
+					$(".prompt").remove();
+				}).mousemove(function(e){
+					$(".prompt")
+					    .css({
+					    	"top": (e.pageY+y)+"px",
+					    	"left": (e.pageX+x)+"px"
+					    })
+				});
+			})
+		</script>
+		
+	</head>
+	<body>
+		<img title="兔子敲门" alt="图片无法加载" src="img/3.jpg" />
+	</body>
+</html>
