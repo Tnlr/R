@@ -7,6 +7,13 @@
 	#{$key}: $value;
 }
 
+@mixin compatibler($key, $value) {
+	#{$key}: -webkit-#{$value};
+	#{$key}: -moz-#{$value};
+	#{$key}: -o-#{$value};
+	#{$key}: $value;
+}
+
 @mixin keyframes($animationName) {
 	@-webkit-keyframes #{$animationName} {
 		@content;
@@ -45,6 +52,7 @@ $width12s: 8.33333333%;
 * {
 	margin: 0;
 	padding: 0;
+	font-family: 'Microsoft YaHei';
 	@include compatible(box-sizing, border-box);
 }
 
@@ -66,14 +74,15 @@ a {
 // button
 
 // button 1
-@mixin button-black-white ($padding) {
+@mixin button-black-white () {
 	background-color: #000;
 	border: none;
 	color: #fff;
 	cursor: pointer;
-	padding: $padding;
 	transition: all .2s;
-	@include compatible(border-radius, 5px);
+	outline: none;
+	padding: 8px 16px;
+	@include compatible(border-radius, 10px);
 	&:hover {
 		color: #000;
 		background-color: #fff;
@@ -93,4 +102,19 @@ a {
 	@include compatible(animation, ($name 2s infinite));
 }
 
+// button 3
+@mixin button-gradient-linear ($bcolor, $ecolor, $hbcolor, $hecolor, $abcolor, $aecolor) {
+	@include compatibler(background, (gradient(linear, left top, left bottom, from($bcolor), to($ecolor))));
+	@include compatible(border-radius, 10px);
+	padding: 8px 16px;
+	cursor: pointer;
+	border: 0;
+	transition: all .2s;
+	&:hover {
+		@include compatibler(background, (gradient(linear, left top, left bottom, from($hbcolor), to($hecolor))));
+	}
 
+	&:active {
+		@include compatibler(background, (gradient(linear, left top, left bottom, from($abcolor), to($aecolor))));
+	}
+}
