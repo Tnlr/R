@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>《javascript高级教程》</title>
+	<link rel="stylesheet" href="./css/blog.css">
+	<script type="text/javascript" src="./js/base/vue.js"></script>
+	<script type="text/javascript" src="./js/common/rcomponent.js"></script>
+	<script type="text/javascript" src="./js/component/subpage.header_nav.js"></script>
+</head>
+<body>
+
+
+	<div id="body" class="body">
+		<header-nav v-bind:lists="navlists"></header-nav>
+	</div>
+	<div style="height: 65px;">s</div>
+	<div class="all">
+		<div class="content">
+			<div id="first">
+				<p>Javascript诞生于1995年，当时它的主要目的是处理以前由服务器语言负责的一些输入验证操作。</p>
+				<br />
+				<h3>javascript的组成</h3>
+				<p>	javascript由三部份组成：ECMAScript,DOM,BOM<br />
+				ECMAScript规定了以下内容：
+					语法
+					类型
+					语句
+					关键字
+					保留字
+					操作符
+					对象
+				</p>
+				<h3>ECMAScript兼容</h3>
+				<p>ECMAScript兼容由ECMA-262给出</p>
+				<p>1. 支持ECMA-262描述的所有“类型，值，对象，属性，函数以及程序句法与语义”。
+				2. 支持Unicode字符标准.
+				<h4>扩展</h4>
+				3. 添加ECMA-262没有描述的“更多类型，值，对象，属性和函数”。ECMA-262所说的这些新增特性，主要是指该标准中没有规定的新对象和对象的新属性。
+				4. 支持ECMA-262没有定义的“程序与正则表达式语法”。（也就是说，可以修改和扩展内置的正则表达式语法）
+				</p>
+				<h3>DOM</h3>
+				<h4> 什么是DOM?</h4>
+				<p>文档对象模型(DOM,Document Object Model)是针对XML但经过扩展用于HTML的应用程序编程接口(API, Application Programming Interface)</p>
+				<h4>DOM做了什么？</h4>
+				<p>DOM1的目标是把整个页面映射为了一个多层节点结构, 便于简化对文档中任意部分的访问和操作。DOM2的增加了很多模块：
+				<br>DOM视图(DOM Views)：定义了跟踪不同文档(例如，应用css之前与之后的文档)视图的接口;<br />
+				DOM事件(DOM Events)：定义了事件和事件处理的接口。<br />
+				DOM样式(DOM Style)：定义了基于CSS为元素应用样式的接口。<br />
+				DOM遍历与范围(DOM Traversal and Range)：定义了遍历和操作文档树的接口。
+				<br />
+				DOM3引入了统一方式加载和保存文档的方法——在DOM加载和保存(DOM Load and Save)模块中定义;新增了验证文档的方法——在DOM验证(DOM Validation)模块中定义。DOM3也对DOM核心进行扩展，开始支持XML1.0规范，涉及XML Infoset,XPath和XMLBase.
+				<h3>BOM</h3>
+				浏览器对象模型(BOM,Brower Object Model)可以对浏览器进行操作。功能如下:
+				弹出新浏览器窗口的功能。<br />
+				移动，缩放和关闭浏览器窗口的功能。<br />
+				提供浏览器详细信息的navigator对象。<br />
+				提供浏览器所加载页面的详细信息的location对象。<br />
+				提供用户显示分辨率详细信息的screen对象。<br>
+				对cookies的支持。<br />
+				像XMLHttpRequest和IE的ActiveXObject这样的自定义对象。<br />
+				</p>
+			</div>
+			<div id="second">
+				<h3>&lt;script&gt;</h3>
+				引用javascript的方法是在HTML中使用&lt;script&gt;标签引入。&lt;script&gt;定义了下列6个属性：<br />
+				async: 可选，表示应该立即下载脚本，但不应妨碍页面中的其他操作。只对外部脚本文件有效。<br />
+				charset: 可选，表示通过src属性指定的代码的字符集。（很少人使用）<br />
+				defer: 可选，表示脚本可延迟到文档完全被解析和显示之后执行。<br />
+				language: 已废弃。
+				src: 可选，表示包含要执行代码的外部文件。
+				type: 可选，表示编写代码使用的脚本语言的内容类型（也称为MIME类型）。
+				<h3>文档模式</h3>
+				有三种文档模式：混杂模式(quiks mode),标准模式(standards mode),准标准模式(almost standards mode)。不同文档模式会影响css渲染和js的解释执行<br />
+				没有文档声明时，默认开启混杂模式。<br />
+				标准模式：<br />
+				&lt;!-- HTML 4.01严格型 --&gt;<br />
+				&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/htm14/strict.dtd"&gt;<br />
+
+				&lt;!-- XHTML 1.0严格型&gt;<br />
+				&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;<br />
+				
+				&lt;!-- HTML 5 --&gt;<br />
+				&lt;!DOCTYPE html&gt;<br />
+				准标准模式：<br />
+
+				&lt;!-- HTML 4.01过渡型 --&gt;<br />
+				&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/htm14/loose.dtd"&gt;<br />
+				&lt;!-- HTML 4.01框架集型 --&gt;<br />
+				&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/htm14/frameset.dtd"&gt;<br />
+				
+				&lt;!-- XHTML 1.0过渡型&gt;<br />
+				&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;<br />
+
+				&lt;!-- XHTML 1.0框架集型&gt;<br />
+				&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-Frameset.dtd"&gt;<br />
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="./js/blog.js"></script>		
+</body>
+</html>

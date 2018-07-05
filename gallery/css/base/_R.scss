@@ -89,19 +89,6 @@ a {
 	}
 }
 
-// button 2
-@mixin button-animation-construct ($name, $bc, $tc, $bsc, $tsc) {
-	@include keyframes ($name) {
-		from { background-color: $bc; @include compatible(box-shadow, (0 0 9px $bsc)); }
-		50% { background-color: $tc;  @include compatible(box-shadow, (0 0 9px $tsc)); }
-		to { background-color: $bc;  @include compatible(box-shadow, (0 0 9px $bsc)); }
-	}
-}
-
-@mixin button-animation ($name) {
-	@include compatible(animation, ($name 2s infinite));
-}
-
 // button 3
 @mixin button-gradient-linear ($bcolor, $ecolor, $hbcolor, $hecolor, $abcolor, $aecolor) {
 	@include compatibler(background, (gradient(linear, left top, left bottom, from($bcolor), to($ecolor))));
