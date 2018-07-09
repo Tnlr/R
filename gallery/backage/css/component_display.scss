@@ -51,13 +51,16 @@ p {
 
 .all {
 	margin-top: 65px;
+<<<<<<< HEAD:gallery/backage/css/component_display.scss
 	min-width: 1330px;
+=======
+	min-width: 1320px;
+>>>>>>> 7c2ff6963bfcc37b73a8f7693322542aa10ec3c8:gallery/css/component_display.scss
 	position: relative;
 }
 
 // content start
 
-// button start
 
 .content {
 	// border: 1px solid #000;
@@ -66,6 +69,8 @@ p {
 	overflow: hidden;
 }
 
+// button start
+
 .button_display {
 	
 	margin-top: 12px;
@@ -73,11 +78,15 @@ p {
 	button {
 		margin: 0 5px;
 	}
+	
+	>div {
+		margin-top: 12px;
+		padding: 12px 0px;
+
+	}
 
 	.black-white-bgc {
-		margin-top: 12px;
 		background-color: #777;
-		padding: 12px 0px;
 
 		.button-black-white {
 			@include button-black-white();
@@ -101,9 +110,7 @@ p {
 	}
 
 	.gradient-bgc {
-		margin-top: 12px;
 		background-color: #e2e2e2;
-		padding: 12px 0px;
 
 		.button-gradient-linear {
 			@include button-gradient-linear(#faa51a, #f47a20, #f88e11, #f06015, #f47a20, #faa51a);
@@ -129,6 +136,16 @@ p {
 			@extend .button-gradient-linear;
 			padding: 1px 2px;
 		}
+	}
+
+	.animation-bgc {
+		background: #000;
+
+		.button-animation {
+			// @include button-animation(btn)
+		}
+
+
 	}
 }
 

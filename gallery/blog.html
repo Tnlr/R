@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>《javascript高级教程》</title>
+	<link rel="stylesheet" href="./css/blog.css">
+	<script type="text/javascript" src="./js/base/vue.js"></script>
+	<script type="text/javascript" src="./js/common/rcomponent.js"></script>
+	<script type="text/javascript" src="./js/component/subpage.content.js"></script>
+	<script type="text/javascript" src="./js/component/subpage.js"></script>
+</head>
+<body>
+	
+	<subpage v-bind:lists="navlists" id="subpage">
+		<div id="introduction">
+			<h1>第一章：Javascript简介</h1>
+			
+			<div>
+				<h2>Javascript的由来</h2>
+				<p>Javascript诞生于1995年，当时它的主要目的是处理以前由服务器语言负责的一些输入验证操作。</p>
+			</div>
+			<div>
+				<h2>javascript的组成</h2>
+				<p>	javascript由三部份组成：
+					<mark>ECMAScript</mark>&nbsp;&nbsp;
+					<mark>DOM</mark>&nbsp;&nbsp;
+					<mark>BOM</mark>&nbsp;&nbsp;
+				</p>
+				<p>ECMAScript规定了以下内容：
+					<sub-unorder v-bind:unorders="introduction_unorder_1"></sub-unorder>
+				</p>
+			</div>
+
+			<div>
+				<h2>ECMAScript兼容</h2>
+				<p>ECMAScript兼容由ECMA-262给出：</p>
+				<sub-order v-bind:orders="introduction_order_1"></sub-order>
+			</div>
+			
+			<div>
+				<h2>DOM</h2>
+				<h3> 什么是DOM?</h3>
+				<p>文档对象模型(DOM,Document Object Model)是针对XML但经过扩展用于HTML的应用程序编程接口(API, Application Programming Interface)。</p>
+				
+				<h3>DOM做了什么？</h3>
+				<ul>
+					<li>DOM1的目标是把整个页面映射为了一个多层节点结构, 便于简化对文档中任意部分的访问和操作。
+					</li>
+					<li>
+						DOM2的增加的模块：
+						<sub-table v-bind:tables="introduction_table_1"></sub-table>
+					</li>
+					<li>
+						DOM3引入了统一方式加载和保存文档的方法——在DOM加载和保存(DOM Load and Save)模块中定义;新增了验证文档的方法——在DOM验证(DOM Validation)模块中定义。DOM3也对DOM核心进行扩展，开始支持XML1.0规范，涉及XML Infoset,XPath和XMLBase。
+					</li>
+				</ul>
+			</div>
+
+			<div>
+				<h2>BOM</h2>
+				<p>浏览器对象模型(BOM,Brower Object Model)可以对浏览器进行操作。功能如下:</p>
+				<sub-unorder v-bind:unorders="introduction_unorder_2"></sub-unorder>
+			</div>
+		</div>
+
+		<div id="useJs">
+			<h1>第二章：在HTML中使用Javascript</h1>
+
+			<div>
+				<h2>&lt;script&gt;标签</h2>
+				<p>引用javascript的方法是在HTML中使用&lt;script&gt;标签引入。&lt;script&gt;定义了下列6个属性：</p>
+				<sub-table v-bind:tables="useJs_table_1"></sub-table>
+			</div>
+			<div>
+				<h2>文档模式</h2>
+				<p>
+					有三种文档模式：混杂模式(quiks mode),标准模式(standards mode),准标准模式(almost standards mode)。不同文档模式会影响css渲染和js的解释执行。（没有文档声明时，默认开启混杂模式。）
+				</p>
+				<h3>标准模式：</h3>
+				<sub-table v-bind:tables="useJs_table_2"></sub-table>
+
+				<h3>准标准模式：</h3>
+				<sub-table v-bind:tables="useJs_table_3"></sub-table>
+				
+			</div>
+		</div>
+
+		<div id="contentform">
+			<h1>Header</h1>
+			<div>
+				<h2>subheader</h2>
+				<h3>text</h3>
+				<p>Lorem ipsum dolor sit amet.</p>
+
+				<h3>list</h3>
+				<sub-unorder v-bind:unorders="contentform_unorder_1"></sub-unorder>
+
+				<h3>list</h3>
+				<sub-order v-bind:orders="contentform_order_1"></sub-order>
+
+				<h3>table</h3>
+				<sub-table v-bind:tables="cotentform_table_1"></sub-table>
+			</div>
+		</div>
+
+	</subpage>
+	
+	
+
+	
+	<script type="text/javascript" src="./js/blog.js"></script>		
+</body>
+</html>

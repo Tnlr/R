@@ -1,0 +1,95 @@
+@import '../base/R';
+
+.header-nav {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+
+	.top {
+	width: 100%;
+	border-bottom: 1px solid #E3E3E3;
+	background-color: #fff;
+	opacity: 0.6;
+		span {
+			font-size: $font-size32;
+			line-height: 65px;
+			padding-left: 50px;
+		}
+	}
+
+	.nav {
+		width: 300px;
+		border-right: 1px solid #000;
+		padding-top: 30px;
+		li {
+			padding: 5px 0;
+			padding-left: 50px;
+			color: #777;
+		}
+	}
+}
+
+.all {
+	margin-top: 65px;
+	min-width: 1430px;
+	position: relative;
+
+	.content {
+		width: 706px;
+		margin: 0 auto;
+		>div {
+			margin-top: 50px;
+
+			h2 {
+				height: 75px;
+				border-bottom: 1px solid #DDDDDD;
+				margin-bottom: 25px;
+				&:before {
+					content: '';
+					height: 30px;
+					display: block;
+					visibility: hidden;
+				}
+			}
+
+			h3 {
+				margin: 15px 0;
+			}
+			
+			p {
+				margin: 8px 0;
+			}
+
+			ul {
+				list-style: disc;
+				margin: 10px 0 0 20px;
+			}
+				
+			ol {
+				margin: 10px 0 0 20px;
+			}
+
+			li {
+				heigth: 24px;
+				line-height: 24px;
+			}
+
+			table {
+				width: 100%;
+				border-collapse: collapse;
+				margin: 10px 0;
+				td, th {
+					border: 1px solid #555;
+					padding: 7px 5px;
+					width: 50%;
+					text-align: center;
+				}
+				th {
+					background-color: #bdbdbd;
+					color: #fff;
+				}
+			}
+		}
+	}
+}

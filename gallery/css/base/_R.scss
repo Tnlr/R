@@ -1,0 +1,107 @@
+// compatible
+
+@mixin compatible($key, $value) {
+	-webkit-#{$key}: $value;
+	-moz-#{$key}: $value;
+	-o-#{$key}: $value;
+	#{$key}: $value;
+}
+
+@mixin compatibler($key, $value) {
+	#{$key}: -webkit-#{$value};
+	#{$key}: -moz-#{$value};
+	#{$key}: -o-#{$value};
+	#{$key}: $value;
+}
+
+@mixin keyframes($animationName) {
+	@-webkit-keyframes #{$animationName} {
+		@content;
+	}
+	@-moz-keyframes #{$animationName} {
+		@content;
+	}
+	@-o-keyframes #{$animationName} {
+		@content;
+	}
+	@keyframes #{$animationName} {
+		@content;
+	}
+}
+
+// font-size
+$font-size14: 0.875rem;
+$font-size18: 1.125rem;
+$font-size24: 1.5rem;
+$font-size32: 2rem;
+
+// percent width
+$width3s: 33.33333333%;
+$width4s: 25%;
+$width5s: 20%;
+$width6s: 16.66666667%;
+$width7s: 14.28571429%;
+$width8s: 12.5%;
+$width9s: 11.11111111%;
+$width10s: 10%;
+$width11s: 9.09090909%;
+$width12s: 8.33333333%;
+
+// main
+
+* {
+	margin: 0;
+	padding: 0;
+	font-family: 'Microsoft YaHei';
+	@include compatible(box-sizing, border-box);
+}
+
+html,
+body {
+	width: 100%;
+	font-size: 16px;
+}
+
+ul {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+// button
+
+// button 1
+@mixin button-black-white () {
+	background-color: #000;
+	border: none;
+	color: #fff;
+	cursor: pointer;
+	transition: all .2s;
+	outline: none;
+	padding: 8px 16px;
+	@include compatible(border-radius, 10px);
+	&:hover {
+		color: #000;
+		background-color: #fff;
+	}
+}
+
+// button 3
+@mixin button-gradient-linear ($bcolor, $ecolor, $hbcolor, $hecolor, $abcolor, $aecolor) {
+	@include compatibler(background, (gradient(linear, left top, left bottom, from($bcolor), to($ecolor))));
+	@include compatible(border-radius, 10px);
+	padding: 8px 16px;
+	cursor: pointer;
+	border: 0;
+	transition: all .2s;
+	&:hover {
+		@include compatibler(background, (gradient(linear, left top, left bottom, from($hbcolor), to($hecolor))));
+	}
+
+	&:active {
+		@include compatibler(background, (gradient(linear, left top, left bottom, from($abcolor), to($aecolor))));
+	}
+}
