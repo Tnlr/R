@@ -1,0 +1,101 @@
+
+@import './base/_R';
+
+.R-richTextBox {
+	
+	width: 100%;
+	height: 100%;
+
+	.R-richTextBoxFeatures {
+		overflow: hidden;
+		
+		>div {
+			margin: 5px 0;
+		}
+
+		.R-richTextBoxFeaturesCommon {
+			float: left;
+			overflow: hidden;
+			button {
+				float: left;
+				border: 1px solid #777;
+				padding: 5px 7px;
+				@include compatible('border-radius', 5px);
+				margin: 0 1px;
+				background-color: #f5f5f5;
+				background-repeat: no-repeat;
+				background-position: 6px 5px;
+				cursor: pointer;
+				&:hover {
+					background-color: #fff;
+				}
+			}
+
+		}
+		
+		.R-richTextBoxFontSize { //font size function
+			float: left;
+			overflow: hidden;
+			>a {
+				float: left;
+				height: 30px;
+				width: 30px;
+				text-align: center;
+				line-height: 30px;
+				border: 1px solid #777;
+				background-color: #f5f5f5;
+				@include compatible('border-top-left-radius', 5px);
+				@include compatible('border-bottom-left-radius', 5px);
+				-webkit-appearance: none;
+				-moz-appearance : none;
+			}	
+
+			>div {
+				@extend .R-richTextBoxFeaturesCommon;
+				margin: 0;
+				float: left;
+				button {
+					text-align: center;
+					margin: 0;
+					border-left: 0;
+					@include compatible('border-radius', 0);
+					&:last-child {
+						@include compatible('border-top-right-radius', 5px);
+						@include compatible('border-bottom-right-radius', 5px);
+						margin-right: 1px;
+					}
+				}
+			}
+		}
+
+		.R-richTextBoxHeader { // font header function
+			@extend .R-richTextBoxFontSize;
+		}
+	}
+
+	.R-richTextBoxContent {
+		border: 1px solid #000;
+		height: 90%;
+		width: 100%;
+		padding: 20px;
+		overflow-y: scroll;
+
+		ul {
+			list-style: disc;
+		}
+
+		ul,ol {
+			margin-left: 20px;
+		}
+
+		hr {
+			margin: 10px 0;
+		}
+
+		div {
+			margin: 5px 0;
+		}
+
+	}
+}
+
