@@ -3,12 +3,15 @@
 var vm = new Vue({
 	el : '#subpage',
 	data : {
+		// 导航
 		navlists : [
 			{ content : '主页', href : '#all' },
 			{ content : '第一章：Javascript简介', href : '#introduction' },
 			{ content : '第二章：在HTML中使用Javascript', href : '#useJs' },
-			{ content : '轮播', href : '#all' }
+			{ content : '第三章：基本概念', href : '#basicConcept' }
 		],
+
+		// 第一章
 
 		introduction_unorder_1 : ['语法', '类型', '语句', '关键字', '保留字', '操作符', '对象'],
 		introduction_order_1 : [
@@ -35,6 +38,8 @@ var vm = new Vue({
 			'对cookies的支持。',
 			'像XMLHttpRequest和IE的ActiveXObject这样的自定义对象。'
 		],
+
+		// 第二章
 
 		useJs_table_1 : {
 			th : ['属性', '描述'],
@@ -64,6 +69,33 @@ var vm = new Vue({
 				['XHTML 1.0框架集型', '<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-Frameset.dtd">']
 			]
 		},
+
+		// 第三章 
+
+		basicConcept_unorder_1 : [
+			'区分大小写',
+			'标识符：指变量名、函数、属性的名字，或者函数参数。（第一个字符必须为字母、下划线_、美元符号$；其他字符可以是字母、下划线、美元符号、数字）',
+			'// 单行注释',
+			'/* 多行注释 */',
+			'严格模式：user strict（可全局声明，也可以单独一个函数声明）',
+			'每一句最后的分号(;)不是必须的，但是建议都加上'
+
+		],
+		basicConcept_table_1 : {
+			th : ['类型', '值'],
+			tr : [
+				['ECMAScript关键字（*为第五版新增）', 'break、 do、 instanceof、 typeof、 case、 else、 new、 var、 catch、 finally、 return、 vold、 debugger*、 function、 this、 with、 default、 if、 throw、 delete、 in、 try'],
+				['ECMA-262第三版定义的全部保留字', 'abstract、 enum、 int、 short、 boolean、 export、 interface、 static、 byte、 extends、 long、 super、 char、 final、 native、 synchronized、 class、 float、 package、 throws、 const、 goto、 private、 transient、 debugger、 implements、 protected、 volatile、 double、 import、 public'],
+				['第五版非严格模式缩减之后的保留字', 'class、 enum、 extends、 super、 const、 export、 import'],
+				['第五版严格模式额外添加的保留字', 'implements、 package、 public、 interface、 private、 static、 let、 protected、 yield']
+			]
+		},
+		basicConcept_unorder_2 : [
+			'用var声明变量。(非严格模式下不加var将会声明全局变量)',
+			'在函数体外声明为全局变量，在任何位置都能访问。',
+			'在函数内声明为局部变量，只有在该函数内能访问。'
+
+		],
 
 		contentform_unorder_1 : ['lorem', 'lorem', 'lorem'],
 		contentform_order_1 : ['lorem', 'lorem', 'lorem'],
