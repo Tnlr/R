@@ -21,15 +21,16 @@ a {
 
 .R-richTextBox {
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  position: relative; }
   .R-richTextBox .R-richTextBoxFeatures {
     overflow: hidden; }
     .R-richTextBox .R-richTextBoxFeatures > div {
       margin: 5px 0; }
-    .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxFeaturesCommon, .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxFontSize > div, .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxHeader > div {
+    .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxFeaturesCommon, .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxFontSize > div, .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxHeader > div, .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxFontColor > div, .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxBgc > div {
       float: left;
       overflow: hidden; }
-      .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxFeaturesCommon button, .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxFontSize > div button, .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxHeader > div button {
+      .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxFeaturesCommon button, .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxFontSize > div button, .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxHeader > div button, .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxFontColor > div button, .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxBgc > div button {
         float: left;
         border: 1px solid #777;
         padding: 5px 7px;
@@ -42,12 +43,12 @@ a {
         background-repeat: no-repeat;
         background-position: 6px 5px;
         cursor: pointer; }
-        .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxFeaturesCommon button:hover, .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxFontSize > div button:hover, .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxHeader > div button:hover {
+        .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxFeaturesCommon button:hover, .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxFontSize > div button:hover, .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxHeader > div button:hover, .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxFontColor > div button:hover, .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxBgc > div button:hover {
           background-color: #fff; }
-    .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxFontSize, .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxHeader {
+    .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxFontSize, .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxHeader, .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxFontColor, .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxBgc {
       float: left;
       overflow: hidden; }
-      .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxFontSize > a, .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxHeader > a {
+      .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxFontSize > a, .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxHeader > a, .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxFontColor > a, .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxBgc > a {
         float: left;
         height: 30px;
         width: 30px;
@@ -65,10 +66,10 @@ a {
         border-bottom-left-radius: 5px;
         -webkit-appearance: none;
         -moz-appearance: none; }
-      .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxFontSize > div, .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxHeader > div {
+      .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxFontSize > div, .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxHeader > div, .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxFontColor > div, .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxBgc > div {
         margin: 0;
         float: left; }
-        .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxFontSize > div button, .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxHeader > div button {
+        .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxFontSize > div button, .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxHeader > div button, .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxFontColor > div button, .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxBgc > div button {
           text-align: center;
           margin: 0;
           border-left: 0;
@@ -76,7 +77,7 @@ a {
           -moz-border-radius: 0;
           -o-border-radius: 0;
           border-radius: 0; }
-          .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxFontSize > div button:last-child, .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxHeader > div button:last-child {
+          .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxFontSize > div button:last-child, .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxHeader > div button:last-child, .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxFontColor > div button:last-child, .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxBgc > div button:last-child {
             -webkit-border-top-right-radius: 5px;
             -moz-border-top-right-radius: 5px;
             -o-border-top-right-radius: 5px;
@@ -86,19 +87,22 @@ a {
             -o-border-bottom-right-radius: 5px;
             border-bottom-right-radius: 5px;
             margin-right: 1px; }
+    .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxFontColor button, .R-richTextBox .R-richTextBoxFeatures .R-richTextBoxBgc button {
+      height: 30px; }
   .R-richTextBox .R-richTextBoxContent {
     border: 1px solid #000;
-    height: 90%;
     width: 100%;
     padding: 20px;
-    overflow-y: scroll; }
-    .R-richTextBox .R-richTextBoxContent ul {
-      list-style: disc; }
-    .R-richTextBox .R-richTextBoxContent ul, .R-richTextBox .R-richTextBoxContent ol {
-      margin-left: 20px; }
-    .R-richTextBox .R-richTextBoxContent hr {
-      margin: 10px 0; }
+    overflow-y: auto; }
     .R-richTextBox .R-richTextBoxContent div {
       margin: 5px 0; }
+    .R-richTextBox .R-richTextBoxContent p {
+      background: #e5e5e5;
+      padding-left: 20px; }
+  .R-richTextBox .R-richTextBoxOrderLists {
+    height: 200px;
+    position: absolute;
+    top: 0;
+    left: -24px; }
 
 /*# sourceMappingURL=Richtextbox.css.map */

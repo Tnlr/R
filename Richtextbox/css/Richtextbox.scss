@@ -5,6 +5,7 @@
 	
 	width: 100%;
 	height: 100%;
+	position: relative;
 
 	.R-richTextBoxFeatures {
 		overflow: hidden;
@@ -36,6 +37,7 @@
 		.R-richTextBoxFontSize { //font size function
 			float: left;
 			overflow: hidden;
+
 			>a {
 				float: left;
 				height: 30px;
@@ -71,31 +73,44 @@
 		.R-richTextBoxHeader { // font header function
 			@extend .R-richTextBoxFontSize;
 		}
+
+		.R-richTextBoxFontColor { // font color function
+			@extend .R-richTextBoxFontSize;
+
+			button {
+				height: 30px;
+			}
+		}
+
+		.R-richTextBoxBgc {
+			@extend .R-richTextBoxFontColor;
+		}
 	}
 
 	.R-richTextBoxContent {
 		border: 1px solid #000;
-		height: 90%;
 		width: 100%;
 		padding: 20px;
-		overflow-y: scroll;
-
-		ul {
-			list-style: disc;
-		}
-
-		ul,ol {
-			margin-left: 20px;
-		}
-
-		hr {
-			margin: 10px 0;
-		}
+		overflow-y: auto;
 
 		div {
 			margin: 5px 0;
 		}
 
+		p {
+			background: #e5e5e5;
+			padding-left: 20px;
+		}
+
 	}
+	
+	.R-richTextBoxOrderLists {
+		height: 200px;
+		position: absolute;
+		top: 0;
+		left: -24px;
+	}
+
+
 }
 

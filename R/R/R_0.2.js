@@ -27,7 +27,7 @@ var r = function (i, s) {
 r.prototype = {
 
 	// 给所有元素加上事件
-	nf : function (c, callback) {
+	on : function (c, callback) {
 		for (var item in this) {
 			if(item === 'length') {
 				break;
