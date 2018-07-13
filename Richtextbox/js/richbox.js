@@ -7,7 +7,7 @@ function addcss (url) { // 动态添加css
 	document.getElementsByTagName('head')[0].appendChild(css);
 }
 
-function addScript (url) { // 动态添加js
+function addScript (url, callback) { // 动态添加js
 	var script = document.createElement('script');
 	script.type = 'text/javascript';
 	script.src = url;
