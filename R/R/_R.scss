@@ -7,6 +7,13 @@
 	#{$key}: $value;
 }
 
+@mixin compatibler($key, $value) {
+	#{$key}: -webkit-#{$value};
+	#{$key}: -moz-#{$value};
+	#{$key}: -o-#{$value};
+	#{$key}: $value;
+}
+
 @mixin keyframes($animationName) {
 	@-webkit-keyframes #{$animationName} {
 		@content;
@@ -26,6 +33,7 @@
 $font-size14: 0.875rem;
 $font-size18: 1.125rem;
 $font-size24: 1.5rem;
+$font-size32: 2rem;
 
 // percent width
 $width3s: 33.33333333%;
@@ -44,6 +52,7 @@ $width12s: 8.33333333%;
 * {
 	margin: 0;
 	padding: 0;
+	font-family: 'Microsoft YaHei';
 	@include compatible(box-sizing, border-box);
 }
 
@@ -57,34 +66,62 @@ ul {
 	list-style: none;
 }
 
+button {
+	border: 0;
+	background: #ffffff;
+
+	&:focus {
+		outline: none;
+	}
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+	font-family: inherit;
+
+	&:focus {
+		color: inherit;
+		text-decoration: none;
+	}
+
+	&:hover {
+		color: inherit;
+		text-decoration: none;
+	}
+}
+
 // button
 
 // button 1
-@mixin button-black-white ($padding) {
+@mixin button-black-white () {
 	background-color: #000;
 	border: none;
 	color: #fff;
 	cursor: pointer;
-	padding: $padding;
 	transition: all .2s;
-	@include compatible(border-radius, 5px);
+	outline: none;
+	padding: 8px 16px;
+	@include compatible(border-radius, 10px);
 	&:hover {
 		color: #000;
 		background-color: #fff;
 	}
 }
 
-// button 2
-@mixin button-animation-construct ($name, $bc, $tc, $bsc, $tsc) {
-	@include keyframes ($name) {
-		from { background-color: $bc; @include compatible(box-shadow, (0 0 9px $bsc)); }
-		50% { background-color: $tc;  @include compatible(box-shadow, (0 0 9px $tsc)); }
-		to { background-color: $bc;  @include compatible(box-shadow, (0 0 9px $bsc)); }
+// button 3
+@mixin button-gradient-linear ($bcolor, $ecolor, $hbcolor, $hecolor, $abcolor, $aecolor) {
+	@include compatibler(background, (gradient(linear, left top, left bottom, from($bcolor), to($ecolor))));
+	@include compatible(border-radius, 10px);
+	padding: 8px 16px;
+	cursor: pointer;
+	border: 0;
+	transition: all .2s;
+	&:hover {
+		@include compatibler(background, (gradient(linear, left top, left bottom, from($hbcolor), to($hecolor))));
+	}
+
+	&:active {
+		@include compatibler(background, (gradient(linear, left top, left bottom, from($abcolor), to($aecolor))));
 	}
 }
-
-@mixin button-animation ($name) {
-	@include compatible(animation, ($name 2s infinite));
-}
-
-
