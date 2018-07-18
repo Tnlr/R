@@ -28,19 +28,9 @@ Vue.component('sub-table', {
 				'<th v-for="th in tables[\'th\']">{{ th }}</th>' +
 			'</tr>' +
 			'<tr v-for="tr in tables[\'tr\']">' +
-				'<td>{{ tr[0] }}</td>' +
-				'<td>{{ tr[1] }}</td>' +
+				// '<td>{{ tr[0] }}</td>' +
+				// '<td>{{ tr[1] }}</td>' +
+				'<td v-for="td in tr">{{ td }}</td>' +
 			'</tr>' +
 		'</table>' 
-});
-
-Vue.component('sub-code', {
-	props : ['codes', 'codeslists'],
-	Mounted : function () {
-		codeslists = this.codes.split('\n');
-	},
-	template : 
-		'<div>' +
-			'<code v-for="code in codeslists">{{ code }}</code>' +
-		'</div>'
 });

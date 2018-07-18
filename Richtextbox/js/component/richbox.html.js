@@ -23,7 +23,8 @@ var RrichTextBoxVariable
 			// { bgi : './src/img/001-search.png' , method : 'createlink', Parameter : 'www.cnblogs.com/xiaohuochai'}, // 插入链接
 			{ bgi : './src/img/004-back-arrow.png', method : 'undo'}, // 上一步
 			{ bgi : './src/img/003-share.png', method : 'redo'}, // 下一步
-			{ name : 'code', Parameter : 'code'}
+			{ name : 'code', Parameter : 'code'},
+			{ name : 'TB', method : 'enableInlineTableEditing'}
 		];
 
 		var headerlists = [ // 标题
@@ -91,18 +92,19 @@ var RrichTextBoxVariable
 
 					document.execCommand(t[0], false, t[1]); // 附加富文本框事件
 
-					if (t[0] === 'insertunorderedlist') { // 给无序列表加上样式
+					// 需要带行内样式时加上
+					// if (t[0] === 'insertunorderedlist') { // 给无序列表加上样式
 
-						R('#R-richTextBoxContent ul:last-child').css({'list-style' : 'disc', 'margin-left' : '20px'});
-					}
+					// 	R('#R-richTextBoxContent ul:last-child').css({'list-style' : 'disc', 'margin-left' : '20px'});
+					// }
 
-					if (t[0] === 'insertorderedlist') { // 给有序列表加上样式
-						R('#R-richTextBoxContent ol:last-child').css({'margin-left' : '20px'});
-					}
+					// if (t[0] === 'insertorderedlist') { // 给有序列表加上样式
+					// 	R('#R-richTextBoxContent ol:last-child').css({'margin-left' : '20px'});
+					// }
 
-					if (t[0] === 'inserthorizontalrule') { // 给hr加上样式
-						R('#R-richTextBoxContent hr:last-child').css('margin', '10px 0');
-					}
+					// if (t[0] === 'inserthorizontalrule') { // 给hr加上样式
+					// 	R('#R-richTextBoxContent hr:last-child').css('margin', '10px 0');
+					// }
 
 
 

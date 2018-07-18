@@ -111,10 +111,20 @@
 				<h3>typeof操作符</h3>
 				<p>typeof用于检测给定变量的数据类型。以下表示对某个值使用的结果：</p>
 				<sub-table v-bind:tables="basicConcept_table_2"></sub-table>
-				<sub-code v-bind:codes="basicConcept_code_1"></sub-code>
+				<p>示例：</p>
+				<code><br></code><code>var message = 'some string';</code><code>alert(typeof message); // "string"</code><code>alert(typeof(message); // "string"</code><code>alert(typeof 7); // "number"</code><code><br></code><div><br></div>
 
 				<h3>Undefined类型</h3>
-				p{未声明或未初始化的变量都使用typeof检测都会返回undefined。未初始化的变量的值就是undefined。}
+				<p>Undefined类型只有一个值undefined，未声明或未初始化的变量都使用typeof检测都会返回undefined。未初始化的变量的值就是undefined。</p>
+				<p>示例：</p>
+				<code><span style="white-space:pre"><br /></span></code><code>var first;</code><code>alert(first); // undefined</code><code>alert(first == 'undefined'); // false</code><code>alert(first == undefined); // true</code><code>alert(typeof(first) == undefined); // false</code><code>alert(typeof(first) == 'undefined'); // true</code><code><br></code><code>alert(typeof(second) == undefined); // false<span style="white-space:pre">	</span></code><code>alert(typeof(second) == 'undefined') // true</code><code>alert(second == 'undefined'); // error</code><code><br></code><div><br></div>
+
+				<h3>Null类型</h3>
+				<p>Null类型是第二个只有一个值的数据类型，这个特殊的值是null。null值表示一个空对象指针，所以使用typeof操作符检测null值时会返回“object”。</p><p>示例：</p><code><br></code><code>var first = null;</code><code>alert(typeof first); // "object"</code><code><br></code><code>if (first != null) { // 一般使用情况</code><code>&nbsp; &nbsp; // 处理代码</code><code>}</code><code><br></code><p><br></p>
+
+				<h3>Boolean类型</h3>
+				<p>Boolean类型有两个变量值：true和false。使用Boolean()函数可以将其他类型转换成boolean类型。</p><p>示例：</p><code><br></code><code>var first = 'Hello world!';</code><code>var firstAsBoolean = Boolean(first);</code><code>alert(firstAsBoolean); // true</code><code><br></code><p>下表展示其他类型转换成Boolean类型的转换规则：</p>
+				<sub-table v-bind:tables="basicConcept_table_3"></sub-table>
 
 			</div>
 		</div> <!-- 第三章：基本概念 -->

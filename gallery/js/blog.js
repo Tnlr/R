@@ -106,12 +106,16 @@ var vm = new Vue({
 				['object', '函数']
 			]
 		},
-
-		basicConcept_code_1 : 
-			'var message = "some string"; \n' +
-			'alert(typeof message); // "string" \n' +
-			'alert(typeof (message)); // "string" \n' +
-			'alert(typeof 95); // "number"',
+		basicConcept_table_3 : {
+			th : ['数据类型', '转换成true的值', '转换成false的值'],
+			tr : [
+				['Boolean', 'true', 'false'],
+				['String', '任何非空字符串', '""(空字符串)'],
+				['Number', '任何非零数字值(包括无穷大)', '0和NaN'],
+				['Object', '任何对象', 'null'],
+				['undefined', 'n/a(不适用)', 'undefined']
+			]
+		},
 
 		contentform_unorder_1 : ['lorem', 'lorem', 'lorem'],
 		contentform_order_1 : ['lorem', 'lorem', 'lorem'],
@@ -128,3 +132,23 @@ var vm = new Vue({
 
 window.onload = fsetNavHeight;
 window.onresize = fsetNavHeight;
+
+// 让表格列的宽度自适应
+function setTablewidth () {
+	var e = document.getElementsByTagName('tr');
+	for (var item in e) {
+		if (item === 'length') {
+			break;
+		}
+		var length = 100 / e[item].children.length;
+		for (var jtem in e[item].children) {
+			if (jtem === 'length') {
+				break;
+			}
+
+			e[item].children[jtem].setAttribute('style', 'width:' + length + '%');
+		}
+	}
+}
+
+setTablewidth();

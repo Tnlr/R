@@ -11,11 +11,16 @@
 		<rich-box></rich-box>
 	</div>
 
-	<div style="width:80%; margin: 0 auto; height: 300px;">
-		<rich-box></rich-box>
-	</div>
+	<button id="output">Get</button>
+	
 
 	<script type="text/javascript" src="./js/richbox.js"></script>
-
+	
+	<script type="text/javascript">
+		var e = document.getElementById('output');
+		e.onclick = function () {
+			console.log(getRichTextBoxContent());
+		};
+	</script>
 </body>
 </html>

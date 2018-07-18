@@ -53,8 +53,11 @@ function vm () {
 
 // 获取富文本框内容
 function getRichTextBoxContent () {
-	R('#R-richTextBoxContent p').css({'background-color' : '#e5e5e5', 'margin-left' : '20px'});
-	return R('#R-richTextBoxContent').html();
+	var code = R('#R-richTextBoxContent').html();
+	code = code.replace(/<p>/g, '<code>').replace(/<\/p>/g, '</code>');
+	code = code.replace(/<div>/g, '<p>').replace(/<\/div>/g, '</p>');
+	return code;
+	// return code.replace(/<\/div>/g, '</p>').replace(/<\/div>/g, '</p>');
 }
 
 addRichBox_html_js();
