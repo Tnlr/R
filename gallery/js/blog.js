@@ -96,6 +96,22 @@ var vm = new Vue({
 			'在函数内声明为局部变量，只有在该函数内能访问。'
 
 		],
+		basicConcept_table_2 : {
+			th : ['检测结果', '意义'],
+			tr : [
+				['undefined', '未定义'],
+				['boolean', '布尔值'],
+				['string', '字符串'],
+				['number', '数值'],
+				['object', '函数']
+			]
+		},
+
+		basicConcept_code_1 : 
+			'var message = "some string"; \n' +
+			'alert(typeof message); // "string" \n' +
+			'alert(typeof (message)); // "string" \n' +
+			'alert(typeof 95); // "number"',
 
 		contentform_unorder_1 : ['lorem', 'lorem', 'lorem'],
 		contentform_order_1 : ['lorem', 'lorem', 'lorem'],
@@ -106,7 +122,7 @@ var vm = new Vue({
 				['lorem-2', 'lorem_2'],
 				['lorem-3', 'lorem_3']
 			]
-		}
+		},
 	}
 });
 

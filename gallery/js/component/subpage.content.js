@@ -1,37 +1,5 @@
 
 
-// Vm.component('content', {
-// 	props: [''],
-// 	template: 
-// 		'<div>' +
-// 			'<h2></h2>' +
-// 			'' +
-// 			'' +
-// 			'' +
-// 			'' +
-// 			'' +
-// 			'' +
-// 			'' +
-// 			'' +
-// 			'' +
-// 			'' +
-// 			'' +
-// 			'' +
-// 			'' +
-// 			'' +
-// 			'' +
-// 		'</div>'
-// });
-
-// Vue.component('text', {
-// 	props: ['text'],
-// 	template :
-// 		'<div>' +
-// 			'<h3 v-show="text[\'istitle\']">{{ text["title"] }}</h3>' +
-// 			'<p>{{ text["text"] }}</p>' +
-// 		'</div>'
-// });
-
 Vue.component('sub-unorder', {
 	props : ['unorders'],
 	template : 
@@ -64,4 +32,15 @@ Vue.component('sub-table', {
 				'<td>{{ tr[1] }}</td>' +
 			'</tr>' +
 		'</table>' 
+});
+
+Vue.component('sub-code', {
+	props : ['codes', 'codeslists'],
+	Mounted : function () {
+		codeslists = this.codes.split('\n');
+	},
+	template : 
+		'<div>' +
+			'<code v-for="code in codeslists">{{ code }}</code>' +
+		'</div>'
 });

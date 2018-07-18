@@ -62,7 +62,7 @@
 				<p>浏览器对象模型(BOM,Brower Object Model)可以对浏览器进行操作。功能如下:</p>
 				<sub-unorder v-bind:unorders="introduction_unorder_2"></sub-unorder>
 			</div>
-		</div>
+		</div> <!-- 第一章：Javascript简介-->
 
 		<div id="useJs">
 			<h1>第二章：在HTML中使用Javascript</h1>
@@ -84,7 +84,7 @@
 				<sub-table v-bind:tables="useJs_table_3"></sub-table>
 				
 			</div>
-		</div>
+		</div> <!-- 第二章：在HTML中使用JavaScript -->
 		
 		<div id="basicConcept">
 			<h1>第三章：基本概念</h1>
@@ -104,8 +104,20 @@
 
 				<h3>变量</h3>
 				<sub-unorder v-bind:unorders="basicConcept_unorder_2"></sub-unorder>
+
+				<h2>数据结构</h2>
+				<p>ECMAScript有5种简单数据结构（也称为基本数据结构类型）：Undefined、Null、Boolean、Number和String。还有一种复杂数据结构——Object。</p>
+
+				<h3>typeof操作符</h3>
+				<p>typeof用于检测给定变量的数据类型。以下表示对某个值使用的结果：</p>
+				<sub-table v-bind:tables="basicConcept_table_2"></sub-table>
+				<sub-code v-bind:codes="basicConcept_code_1"></sub-code>
+
+				<h3>Undefined类型</h3>
+				p{未声明或未初始化的变量都使用typeof检测都会返回undefined。未初始化的变量的值就是undefined。}
+
 			</div>
-		</div>
+		</div> <!-- 第三章：基本概念 -->
 
 		<div id="contentform">
 			<h1>Header</h1>
