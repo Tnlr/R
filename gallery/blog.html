@@ -125,7 +125,13 @@
 				<h3>Boolean类型</h3>
 				<p>Boolean类型有两个变量值：true和false。使用Boolean()函数可以将其他类型转换成boolean类型。</p><p>示例：</p><code><br></code><code>var first = 'Hello world!';</code><code>var firstAsBoolean = Boolean(first);</code><code>alert(firstAsBoolean); // true</code><code><br></code><p>下表展示其他类型转换成Boolean类型的转换规则：</p>
 				<sub-table v-bind:tables="basicConcept_table_3"></sub-table>
+				
+				<h3> Number类型</h3>
+				<p>Number类型使用IEEE754格式来表示整数和浮点数值。</p><p>三种进制：十进制、八进制、十六进制。八进制字面值的第一位必须是零（0），然后是八进制数字序列数字序列（0~7）,如果字面量中的数值超出了范围，那么前导零将被忽略，后面的数值将被当做十进制数值解析。十六进制字面值的前两位必须是0x，后跟任何十六进制数字（0~9及A~F），字母A~F可以大写，也可以小写。</p><code><br></code><code>var intNum = 55; // 整数</code><code>var octalNum1 = 070; // 八进制的56</code><code>var octalNum2 = 079; // 无效的八进制数值——解析为79</code><code>var octalNum3 = 08; // 无效八进制数值——解析为8</code><code><br></code><code>var hexNum1 = 0xA; // 十六进制的10</code><code>var hexNum2 = 0x1f; // 十六进制的31</code><code><br></code><p><br></p>
+				
+				浮点数值：<p><br></p><code><br></code><code>var floatNum1 = 0.1;</code><code>var floatNum2 = .1; // 有效，但不推荐</code><code>var floatNum3 = 1.; // 1</code><code><br></code><p><br></p><p>e表示法：</p><p><br></p><code><br></code><code>var floatNum = 3.125e7; // 等于31250000(3.125乘以10的7次方）</code><code><br></code><p><br></p><p><b>提示（不要做这样的测试）：</b></p><p><b><br></b></p><code><b><br></b></code><code>if (a+b ==0.3) {</code><code>&nbsp;// dosome</code><code>} // a,b为0.05和0.25，或者0.15和0.15则可以通过，如果为0.1和0.2则无法通过。</code><code><br></code><p><br></p>
 
+				<p>数值范围：</p><ul><li>ECMAScript能过表示的最小数值保存在Number.MIN_VALUE中——在大多数浏览器中，这个值是5e-324。</li><li>能够表示的最大数值保存在Number.MAX_VALUE——在大多数浏览器中，这个值是1.7976931348623157e+308。</li><li>如果超出范围则显示Infinity,负值则为-Infinity。使用isFinite()可以来测试某个数值是否处于最大最小之间。</li></ul>
 			</div>
 		</div> <!-- 第三章：基本概念 -->
 
