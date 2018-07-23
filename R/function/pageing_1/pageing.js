@@ -1,21 +1,23 @@
 
-var pageing ={
 
-	number : [],
+// 对象模式，多次复用需要使用不同的变量名
+
+var varPageing = {
+	number : [], // 按钮节点
 	prebutton : '',
 	nextbutton : '',
-	// firstbutton : '',
-	// lastbutton : '',
-	totalpage : '14',
+	totalpage : 14,
 	nowpage : 1,
-
+	
 
 	init : function () {
 		this.getElement();
-		
+
 		this.number[this.number.length - 1].innerHTML = this.totalpage; // 赋值给最后一页
 		this.number[0].classList.add('nowpageing'); // 给第一个加样式
-		this.nextpage();
+		this.nextPage();
+		this.prePage();
+		this.numberPage();
 	},
 	// 获取按钮
 	getElement : function () {
@@ -32,37 +34,108 @@ var pageing ={
 	},
 
 	// 下一页操作
-	nextpage : function () {
-		this.nextbutton.onclick = function () {
-			pageing.nowpage++; // 增加当前页
+	nextPage : function () {
 
-			// if (this.nowpage <= 4) {
-				pageing.nowpageStyle();
-			// }
+		this.nextbutton.onclick = function () {
+			if (varPageing.nowpage === varPageing.totalpage) { // 最大页时返回
+				return false;
+			}
+
+			varPageing.nowpage++; // 增加当前页
+
+			if (varPageing.nowpage <= 4 || varPageing.nowpage > varPageing.totalpage - 3) { // 小于第四页时变背景
+				varPageing.nowpageStyle();
+			} else if (varPageing.nowpage === varPageing.totalpage - 3) { // 最后四页时变按钮
+				varPageing.changeValue('...', varPageing.totalpage - 4, varPageing.totalpage - 3,  varPageing.totalpage - 2, varPageing.totalpage - 1);
+			} else { // 大于第四页，小于最后四页时变数字
+				varPageing.changeValue('...', Number(varPageing.number[2].innerHTML) + 1, Number(varPageing.number[3].innerHTML) + 1,  Number(varPageing.number[4].innerHTML) + 1, '...');
+			}
+
+			if (varPageing.varPageingRequest) {
+				varPageing.varPageingRequest();
+			}
 		};
+	},
+
+	// 上一页操作
+	prePage : function () {
+		this.prebutton.onclick = function () {
+
+			if (varPageing.nowpage === 1) { // 为第一页时返回
+				return false;
+			}
+
+			varPageing.nowpage--;
+
+			if (varPageing.nowpage < 4 || varPageing.nowpage >= varPageing.totalpage - 3) {
+				varPageing.nowpageStyle();
+			} else if (varPageing.nowpage === 4) {
+				varPageing.changeValue(2, 3, 4, 5, '...');
+			} else {
+				varPageing.changeValue('...', Number(varPageing.number[2].innerHTML) - 1, Number(varPageing.number[3].innerHTML) - 1,  Number(varPageing.number[4].innerHTML) - 1, '...');
+			}
+
+			if (varPageing.varPageingRequest) {
+				varPageing.varPageingRequest();
+			}
+		};
+	},
+
+	// 点击数字翻页 
+	numberPage : function () {
+		for (var item = 0; item < this.number.length; item++) {
+			this.number[item].onclick = function () {
+				if (this.innerHTML === '...') { // 点击时为非数字，返回
+					return false;
+				}
+
+				varPageing.nowpage = Number(this.innerHTML); //将当前点击数字赋值给当前页
+
+				if (varPageing.nowpage <= 4) {
+					varPageing.changeValue(2, 3, 4, 5, '...');
+				} else if (varPageing.nowpage >= varPageing.totalpage - 3) {
+					varPageing.changeValue('...', varPageing.totalpage - 4, varPageing.totalpage - 3,  varPageing.totalpage - 2, varPageing.totalpage - 1);
+				} else {
+					varPageing.changeValue('...', varPageing.nowpage - 1, varPageing.nowpage,  varPageing.nowpage + 1, '...');
+				}
+
+				varPageing.nowpageStyle();
+
+				if (varPageing.varPageingRequest) {
+					varPageing.varPageingRequest();
+				}
+
+			};
+		}
 	},
 
 	// 改变所有值
 	changeValue : function (a, b, c, d, e) {
-		number[1].innerHTML = a;
-		number[2].innerHTML = b;
-		number[3].innerHTML = c;
-		number[4].innerHTML = d;
-		number[5].innerHTML = e;
+		this.number[1].innerHTML = a;
+		this.number[2].innerHTML = b;
+		this.number[3].innerHTML = c;
+		this.number[4].innerHTML = d;
+		this.number[5].innerHTML = e;
 	},
 
 	// 当前页变样式 
 	nowpageStyle : function () {
 		for(var item = 0; item < this.number.length; item++) {
 			this.number[item].classList.remove('nowpageing');
-			console.log(this.nowpage, Number(this.number[item].innerHTML));
 			if(this.nowpage === Number(this.number[item].innerHTML)) {
 				this.number[item].classList.add('nowpageing');
 			}
 		}
+	},
+
+	request : function (callback) {
+		this.varPageingRequest = callback;
 	}
 };
 
+
 window.onload = function () {
-	pageing.init();
+
+	varPageing.init();
+
 };
