@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="animate.css">
+	<script type="text/javascript" src="../jquery/js/jquery.js"></script>
+	<script type="text/javascript">
+
+		$.fn.extend({  // animate函数，需要基于jquery
+		  animateCss: function(animationName, callback) {
+		    var animationEnd = (function(el) {
+		      var animations = {
+		        animation: 'animationend',
+		        OAnimation: 'oAnimationEnd',
+		        MozAnimation: 'mozAnimationEnd',
+		        WebkitAnimation: 'webkitAnimationEnd',
+		      };
+
+		      for (var t in animations) {
+		        if (el.style[t] !== undefined) {
+		          return animations[t];
+		        }
+		      }
+		    })(document.createElement('div'));
+
+		    this.addClass('animated ' + animationName).one(animationEnd, function() {
+		      $(this).removeClass('animated ' + animationName);
+
+		      if (typeof callback === 'function') callback();
+		    });
+
+		    return this;
+		  },
+		});
+
+		var animateCss = function(e, animationName, callback) { // js版本
+
+		  var animationEnd = (function(el) { // 创建事件
+		    var animations = {
+		      animation: 'animationend',
+		      OAnimation: 'oAnimationEnd',
+		      MozAnimation: 'mozAnimationEnd',
+		      WebkitAnimation: 'webkitAnimationEnd',
+		    };
+
+		    for (var t in animations) {
+		      if (el.style[t] !== undefined) {
+		        return animations[t];
+		      }
+		    }
+		  })(document.createElement('div'));
+
+		  e.classList.add('animated', animationName);
+		  e.addEventListener(animationEnd, function () {
+		  	e.classList.remove('animated', animationName);
+
+		    if (typeof callback === 'function') callback();
+		  });
+
+		  return e;
+		};
+
+		function a () {
+			var e = document.getElementsByTagName('button')[0];
+			animateCss(e, 'hinge', function () {
+				console.log('Yes');
+			});
+		}
+		
+	</script>
+
+	<style type="text/css">
+		button {
+			width: 60px;
+			height: 30px;
+			margin-top: 30px;
+			margin-left: 200px;
+		}
+	</style>
+</head>
+<body>
+	<button onclick="a()">Button</button>
+</body>
+</html>
