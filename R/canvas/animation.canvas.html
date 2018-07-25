@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Canvas</title>
+</head>
+<body>
+	<canvas id="canvas" style="border: 1px solid #888;" width="500px"
+	height="1000px"></canvas>
+	<button style="position: fixed; top: 10px; right: 10px;" id="start">Start</button>
+	<script type="text/javascript">
+		var canvas = document.getElementById('canvas');
+		var context = canvas.getContext('2d');
+
+		//用线段绘制六边形.
+
+		function a (sum) {
+			var n = 0,
+			    dx = 150,
+			    dy = 150,
+			    s = 150,
+			    x,
+			    y;
+	 			dig = Math.PI / 8 + 1;
+
+			context.beginPath();
+			var g1 = context.createLinearGradient(100, 100, 200, 200);
+			g1.addColorStop(0, '#E55D87');
+			g1.addColorStop(1, '#5FC3E4');
+
+			context.fillStyle = g1;
+			context.strokeStyle = g1;
+
+			for (var i = 0; i < sum; i++) {
+				x = Math.sin(i * dig);
+				y = Math.cos(i * dig);
+				context.lineTo(dx + x * s, dy + y *s);
+			}
+
+			context.closePath();
+			// context.fill();
+			context.stroke();
+		}
+
+		function b () {
+			context.clearRect(0, 0, 500, 1000); // 清除矩形框
+			a(i);
+			i++;
+
+			if (i < 101) {
+				setTimeout(b, 10);
+			}
+		}
+
+		document.getElementById('start').onclick = function () {
+			i = 0;
+			b();
+		};
+
+		i = null;
+	</script>
+</body>
+</html>
