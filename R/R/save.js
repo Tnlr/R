@@ -26,7 +26,7 @@ var EventUtil = {
 
 	// 获取事件对象
 	getEvent : function (event) {
-		return evetn ? event : window.event;
+		return event ? event : window.event;
 	},
 
 	// 获取目标
@@ -49,6 +49,37 @@ var EventUtil = {
 			event.stopPropagation();
 		} else {
 			event.cancelBubble = true;
+		}
+	},
+
+	// 获取相关元素
+	getRelatedTarget : function (event) {
+		if (event.relatedTarget) {
+			return event.relatedTarget;
+		} else if (event.toElement) {
+			return event.toElement;
+		} else if (event.fromElement) {
+			return fromElement;
+		} else {
+			return null;
+		}
+	},
+
+	// 获取鼠标滚轮增量值
+	getWheelDelta : function () {
+		if (event.wheelDelta) {
+			return (client.engine.opera && client.engine.opera < 9.5 ? - event.wheelDelta : event.wheelDelta);
+		} else {
+			return - event.detail * 40;
+		}
+	},
+
+	// 获取字符编码
+	getCharCode : function (event) {
+		if(typeof event.charCode == 'number') {
+			return event.charCode;
+		} else {
+			return event.keyCode;
 		}
 	}
 };
