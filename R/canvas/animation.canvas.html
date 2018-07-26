@@ -21,13 +21,13 @@
 			    s = 150,
 			    x,
 			    y;
-	 			dig = Math.PI / 8 + 1;
+	 			dig = Math.PI / 4;
 
 			context.beginPath();
 			var g1 = context.createLinearGradient(100, 100, 200, 200);
-			g1.addColorStop(0, '#E55D87');
-			g1.addColorStop(1, '#5FC3E4');
-
+			// g1.addColorStop(0, '#E55D87');
+			g1.addColorStop(0, 'rgba(255, 0, 0, 0.1)');
+			g1.addColorStop(1, 'rgba(0, 255, 0, 0.1)');
 			context.fillStyle = g1;
 			context.strokeStyle = g1;
 
@@ -38,8 +38,8 @@
 			}
 
 			context.closePath();
-			// context.fill();
-			context.stroke();
+			context.fill();
+			// context.stroke();
 		}
 
 		function b () {
@@ -47,8 +47,13 @@
 			a(i);
 			i++;
 
-			if (i < 101) {
+			if (i < 45) {
 				setTimeout(b, 10);
+			} else {
+				var imgURI = canvas.toDataURL('image/png');
+				var image = document.createElement('img');
+				image.src = imgURI;
+				document.body.appendChild(image);
 			}
 		}
 
@@ -58,6 +63,8 @@
 		};
 
 		i = null;
+
+		
 	</script>
 </body>
 </html>
