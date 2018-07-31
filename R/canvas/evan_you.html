@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Evan you</title>
+</head>
+
+<body>
+    <canvas></canvas>
+    <script>
+    document.addEventListener('touchmove', function(e) { // 手机点击事件
+        e.preventDefault();
+    });
+
+    var c = document.getElementsByTagName('canvas')[0], // 获取接线
+        x = c.getContext('2d'), // 获取上下文
+        pr = window.devicePixelRatio || 1, // 分辨率之比
+        w = window.innerWidth, // 屏幕宽度
+        h = window.innerHeight, // 屏幕高度
+        f = 90, // 控制了图像的大小
+        q,
+        m = Math, // 数学函数
+        r = 0,
+        u = m.PI * 2, // 360°
+        v = m.cos, // cos函数
+        z = m.random; // 随机数
+    c.width = w * pr; // 重置宽度
+    c.height = h * pr; // 重置高度
+    x.scale(pr, pr); // 按设备缩放
+    x.globalAlpha = 0.6;
+
+    function i() { // 初始化函数
+        x.clearRect(0, 0, w, h); // 清除屏幕
+
+        q = [
+            { x: 0, y: h * .7 + f },  // 初次循环上面那个点
+            { x: 0, y: h * .7 - f } // 初次循环下面那个点  f * 2为两个点的距离
+        ];
+
+        while (q[1].x < w + f) { // 当最新一个点超出屏幕宽度就结束循环
+            d(q[0], q[1]);
+        }
+    }
+
+    function d(i, j) { // 画图函数    i = q[0], j = q[1]
+        x.beginPath(); // 开始路径
+        x.moveTo(i.x, i.y); // 遇上一个三角形的一个点一致
+        x.lineTo(j.x, j.y); // 遇上一个三角形的另外一个点重合
+
+        var k = j.x + (z() * 2 - 0.25) * f, 
+        // k为新一个点的x坐标
+        // z() * 2 - 0.25的区间为 -22.5 ~ 157.5（这就是每个三角形能取的屏幕宽度区间）
+        // *f是为了赋予新点一个宽度
+
+            n = y(j.y); // n为新一个点y坐标
+        x.lineTo(k, n); // 新点
+        x.closePath();
+
+        r -= u / -50;
+        x.fillStyle = '#' + (v(r) * 127 + 128 << 16 | v(r + u / 3) * 127 + 128 << 8 | v(r + u / 3 * 2) * 127 + 128).toString(16); // 设置颜色
+        // 16进制取颜色的公式
+        x.fill();
+
+        q[0] = q[1];
+        q[1] = { x: k, y: n };
+    }
+
+    function y(p) { // 返回新点的y坐标
+        var t = p + (z() * 2 - 1.1) * f;
+        return (t > h || t < 0) ? y(p) : t; // 当新点y坐标不在屏幕内时重新计算
+    }
+
+    document.onclick = i;
+    document.ontouchstart = i;
+    i();
+    </script>
+</body>
+
+</html>
