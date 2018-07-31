@@ -12,75 +12,17 @@
 		var canvas = document.getElementById('canvas');
 		var context = canvas.getContext('2d');
 
-		// 矩形
-		// context.fillStyle = 'pink'; // 实心框样式
-		// context.strokeStyle = 'darkred'; // 空闲框样式
-		// context.fillRect(0, 0, 100, 100); // 实心框
-		// context.strokeRect(120, 0, 100, 100); // 空心框
-
-		// context.fillStyle = 'green';
-		// context.strokeStyle = 'green';
-		// context.fillRect(0, 120, 100, 100);
-		// context.strokeRect(120, 120, 100, 100);
-
-		// context.clearRect(50, 50, 120, 120); // 清楚矩形框
-
-		// 圆
-		// context.beginPath();
-		// context.arc(100, 100, 100, 0, Math.PI * 2, true);
-		// context.closePath();
-		// context.fillStyle = 'pink';
-		// context.fill(); // 实心圆
-
-		// context.beginPath();
-		// context.arc(300, 600, 100, 0, Math.PI, true);
-		// context.closePath();
-		// context.strokeStyle = 'green';
-		// context.stroke(); // 空心圆
-
-		// 线段
-		// context.strokeStyle = 'pink';
-		// context.moveTo(50, 50); // 把路径移动到画布中指定的点
-		// context.lineTo(150, 250); // 添加新点
-		// context.lineTo(200, 100);
-		// context.stroke();
-
-		//用线段绘制六边形.
-
-		var n = 0,
-		    dx = 150,
-		    dy = 150,
-		    s = 150,
-		    x,
-		    y;
- 			dig = Math.PI / 3;
-
 		context.beginPath();
+		context.fillStyle = 'pink';
+		context.fillRect(0, 0, 300, 300);
 
-		var g1 = context.createLinearGradient(100, 100, 200, 200);
-		g1.addColorStop(0, '#E55D87');
-		g1.addColorStop(1, '#5FC3E4');
-
-		context.fillStyle = g1;
-		context.strokeStyle = 'rgb(0, 0, 100)';
-
-		for (var i = 0; i < 6; i++) {
-			x = Math.sin(i * dig);
-			y = Math.cos(i * dig);
-			context.lineTo(dx + x * s, dy + y *s);
-		}
-
-		context.closePath();
+		context.fillStyle = 'white';
+		context.arc(100, 100, 10, 0, 2 * Math.PI);
+		context.shadowOffsetX = '10';
+		context.shadowColor = 'red';
+		context.shadowBlur = 10;
 		context.fill();
-		context.stroke();
-
-		// var g1 = context.createLinearGradient(0, 0, 0, 300);
-		// g1.addColorStop(0, '#E55D87');
-		// g1.addColorStop(0.5, '#5FC3E4');
-		// g1.addColorStop(1, 'blue');
-		// context.fillStyle = g1;
-		// context.fillRect(0, 0, 400, 300);
-
+		context.closePath();
 
 	</script>
 </body>
