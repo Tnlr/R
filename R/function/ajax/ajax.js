@@ -30,7 +30,6 @@ var Rajax = {
 				}
 				this.data = this.data.substr(1);
 				this.contentType = 'application/x-www-form-urlencoded';
-				console.log(this.data);
 			}
 		}
 
