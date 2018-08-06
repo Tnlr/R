@@ -91,6 +91,7 @@ a {
 	}
 }
 
+// clear float
 .clearfix {
 	display: inline-block;
 
@@ -103,37 +104,44 @@ a {
 	}
 }
 
-// button
+// upload file
 
-// button 1
-@mixin button-black-white () {
-	background-color: #000;
-	border: none;
-	color: #fff;
-	cursor: pointer;
-	transition: all .2s;
-	outline: none;
-	padding: 8px 16px;
-	@include compatible(border-radius, 10px);
-	&:hover {
-		color: #000;
-		background-color: #fff;
+.r-upload {
+	width: 100%;
+	height: 100%;
+	padding: 4px 10px;
+    line-height: 20px;
+	text-align: center;
+    position: relative;
+    cursor: pointer;
+    color: #888;
+    background: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+
+    &:hover {
+        color: #444;
+        background: #eee;
+        border-color: #ccc;
+        text-decoration: none
+    }
+
+	>input {
+		position: absolute;
+		font-size: 100px;
+		right: 0;
+		top: 0;
+		opacity: 0;
+		filter: alpha(opacity=0);
+		cursor: pointer
 	}
-}
 
-// button 3
-@mixin button-gradient-linear ($bcolor, $ecolor, $hbcolor, $hecolor, $abcolor, $aecolor) {
-	@include compatibler(background, (gradient(linear, left top, left bottom, from($bcolor), to($ecolor))));
-	@include compatible(border-radius, 10px);
-	padding: 8px 16px;
-	cursor: pointer;
-	border: 0;
-	transition: all .2s;
-	&:hover {
-		@include compatibler(background, (gradient(linear, left top, left bottom, from($hbcolor), to($hecolor))));
-	}
-
-	&:active {
-		@include compatibler(background, (gradient(linear, left top, left bottom, from($abcolor), to($aecolor))));
+	>img {
+		margin-top: 10px;
+		width: 100%;
 	}
 }

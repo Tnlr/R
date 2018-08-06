@@ -259,3 +259,4 @@ var R = function (i) {
 		return new r(document.querySelectorAll(i));
 	}
 };
+
