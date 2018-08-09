@@ -10,7 +10,7 @@ var varPageing = {
 	nowpage : 1,
 	
 
-	init : function () {
+	init : function (callback) {
 		this.getElement();
 
 		this.number[this.number.length - 1].innerHTML = this.totalpage; // 赋值给最后一页
@@ -18,6 +18,9 @@ var varPageing = {
 		this.nextPage();
 		this.prePage();
 		this.numberPage();
+		if (callback instanceof Function) {
+		    this.varPageingRequest = callback;
+		}
 	},
 	// 获取按钮
 	getElement : function () {
@@ -129,13 +132,14 @@ var varPageing = {
 	},
 
 	request : function (callback) {
-		this.varPageingRequest = callback;
 	}
 };
 
 
 window.onload = function () {
 
-	varPageing.init();
+	varPageing.init(function () {
+		
+	});
 
 };

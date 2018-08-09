@@ -1,29 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <title>Practice</title>
-    <script type="text/javascript" src="js/vue.js"></script>
-    <style type="text/css">
+    <title>Document</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    .line {
+         overflow: hidden;
+    }
 
+    .line>div {
+        width: 50%;
+        overflow: hidden;
+        float: left;
+    }
+
+    .bottom-line {
+     width: 0;   
+     height: 5px;
+     background: #c7c1e2;
+     transition: width .7s cubic-bezier(.8, 0.1, 0.1, 0.1);
+    }
+
+    .word {
+        transition: color .7s cubic-bezier(0, 0, 0, 0);
+        cursor: pointer;
+    }
+    
+    .word:hover {
+        color: #917dea;
+    }
+    .word:hover .bottom-line {
+        width: 100%;
+    }
     </style>
 </head>
-
 <body>
-	<div id="test">
-		<text-document v-bind:title.sync="doc.title"></text-document>
-	</div>
-    <script type="text/javascript">
-		Vue.component('text-document',{
-			tempalet: `
-                    <text-document
-                        v-bind:title="doc.title"
-                        v-on:update:title="doc.tltle = $event"
-                    ></text-document>
-			    `
-		});
-    </script>
+    <div class="word" style="font-size: 32px; display: inline-block;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, neque.
+        <div class="line">
+            <div>
+                <div class="bottom-line" style="float: right"> </div>
+            </div>
+            <div>
+                <div class="bottom-line"></div>
+            </div>
+        </div>
+    </div>
+    
 </body>
-
 </html>
