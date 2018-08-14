@@ -29,7 +29,9 @@
 		getRelatedTarget(event)：获取相关元素：事件对象
 		getWheelDelta()：获取鼠标滚轮增量值
 		getCharCode(event)：获取字符编码
-	}
+        throttle：函数节流：方法，运行环境（可选）
+        ----------------------------------------------
+        addObjectAppendChain():附加原型链
 
 */
 
@@ -323,7 +325,53 @@ var R = {
         } else {
             return event.keyCode;
         }
-    }
+    },
 
+    // 函数清理
+    // 方法，运行环境（可选）
+    throttle : function (method, context) {
+        clearTimeout(method.tId);
+        method.tId = setTimeout (function () {
+            method.call(context);
+        }, 100);
+    },
+
+
+    //------------------------------------------------
+    // 为Object添加原型方法
+
+    addObjectAppendChain : function () {
+        // 转变原型的运行速度很慢，尽量少使用
+        // 附加原型链
+        // 对象  原型
+        Object.appendChain = function(oChain, oProto) {
+            if (arguments.length < 2) {
+                throw new TypeError('Object.appendChain - Not enough arguments');
+            }
+            if (typeof oProto === 'number' || typeof oProto === 'boolean') {
+                throw new TypeError('second argument to Object.appendChain must be an object or a string');
+            }
+
+            var oNewProto = oProto,
+                oReturn,
+                o2nd,
+                oLast;
+
+            oReturn = o2nd = oLast = oChain instanceof this ? oChain : new oChain.constructor(oChain);
+
+            for (var o1st = this.getPrototypeOf(o2nd); o1st !== Object.prototype && o1st !== Function.prototype; o1st = this.getPrototypeOf(o2nd)) {
+                o2nd = o1st;
+            }
+
+            if (oProto.constructor === String) {
+                oNewProto = Function.prototype;
+                oReturn = Function.apply(null, Array.prototype.slice.call(arguments, 1));
+                this.setPrototypeOf(oReturn, oLast);
+            }
+
+            this.setPrototypeOf(o2nd, oNewProto);
+            return oReturn;
+        };
+    }
 
 };
