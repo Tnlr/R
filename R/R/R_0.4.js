@@ -7,6 +7,7 @@
 		estUpload({e: e, size: number, type: []})：判断上传文件的大小与类型：目标，大小，类型
 		-----------------------------------------------
 		getDate(type, date); 获取当前年月日：连接符，时间对象（没有时返回当前日期）
+        birthGetAge(time); 由年月日判断多少岁，time '0000-00-00'的格式
 		lmtNum(input, bool)： 限制只能数字输入：目标，第一位是否可以为0
 		lmtLength(input, length)：限制输入的长度：目标，长度
 		estIdcard(input)：判断身份证：目标
@@ -100,6 +101,27 @@ var R = {
         day = time.getDate() < 10 ? '0' + time.getDate() : time.getDate();
 
         return time.getFullYear() + type + month + type + day;
+    },
+
+    // 由年月日判断多少岁
+    // time '0000-00-00'的格式
+    birthGetAge : function (time) {
+        var times = time.split('-'),
+            nowTime = new Date(), // 创建新的时间对象
+            nowTimes = [ // 当前时间年月日
+                nowTime.getFullYear(),
+                nowTime.getMonth() + 1,
+                nowTime.getDay()
+            ],
+            age; // 岁数
+
+        age = nowTimes[0] - times[0]; // 年份相减获取岁数
+        if (nowTimes[1] < times[1]) { // 月份未满时
+            age--; // 岁数减一
+        } else if (nowTimes[1] == times[1] && nowTimes[3] < times[3]) { // 月份相等且日期未满时
+            age--; // 岁数减一
+        }
+        return age;
     },
 
     // 限制只能数字输入：目标，第一位是否可以为0
