@@ -2,6 +2,9 @@
 // 只是函数库，将类js删除
 
 /* R{	
+        slide(target, speed);滑动展开或手气，target，speed：目标，速度（在原来的基础上加或者减）
+        （注意：由滑动展开开始时，不能设置height为0，使用display:none)
+        -----------------------------------------------
 		showUploadImg(); 上传文件后改变文字，如果有img标签，显示图片。
 		（用法：div.r-upload>input+span+img)：上传框，文字描述，显示图片
 		estUpload({e: e, size: number, type: []})：判断上传文件的大小与类型：目标，大小，类型
@@ -36,7 +39,70 @@
 
 */
 
+
 var R = {
+
+    //------------------------------------------------
+    // 动画库
+
+    // 滑动
+    // target，speed：目标，速度（在原来的基础上加或者减）
+    // 由滑动展开开始时，不能设置height为0，使用display:none。
+    slide : function (target, speed) {
+
+        if (!target) { // 判断是否传参
+            console.error('R::slide FUNCTION:need parameter!');
+            return false;
+        }
+
+        if (typeof speed !== 'number') { // 判断是否设定了速度
+            speed = 0;
+        } else if (speed > 9 || speed < -9) { // 判断速度是否超出设定范围
+            speed = 0;
+            console.warn('R::slide FUNCTION : speed need (-10 < speed < 10)');
+
+        }
+
+        var initialHeight = R.getStyle(target, 'height').slice(0, -2), // 获取动画目标的初始高度
+            isSlide = true; // true 为滑动收起来，false为滑动展开
+
+        if (R.getStyle(target, 'display') === 'none') {
+            target.style.display = 'block'; // 显示目标
+            // 如果时由滑动展开开始，需要先显示目标，获取高度，然后将高度设置为0
+            initialHeight = R.getStyle(target, 'height').slice(0, -2);
+            target.style.height = '0'; // 将目标高度设为0
+            isSlide = false; // 标识属于滑动展开
+       }
+
+       slide(); // 调用滑动函数
+
+        // 滑动
+        function slide () {
+            var height = R.getStyle(target, 'height').slice(0, -2); // 获取动画目标的高度
+
+            // 递减或递增
+            height = isSlide ? (Number(height) - 10 - speed) : Number(height) + 10 + speed;
+            target.style.height = height + 'px'; // 设置高度
+
+            // 判断条件，滑动收起来：滑动展开
+            condition = isSlide ? height > 0 : height < initialHeight;
+
+            // 检测requestAnimationFrame是否存在，检测高度是否大于0
+            if (window.requestAnimationFrame && condition) {
+                window.requestAnimationFrame(slide); // 调用requestAnimationFrame
+            } else if (condition) {
+                setTimeout(slide, 10);
+            } else {
+                target.style.height = initialHeight + 'px'; // 最后设置高度为初始高度
+
+                if (isSlide) { // 滑动收起来是才需要隐藏
+                    target.style.display = 'none'; // 最后设置隐藏
+                }
+            }
+        }
+    },
+
+    //------------------------------------------------
 
     // 与css有交互的UI函数
 
@@ -58,7 +124,7 @@ var R = {
     },
 
     // 判断上传的文件的大小类型
-    // e, size,type：目标，大小,类型
+    // e, size,type：目标，大小，类型
     estUpload: function(upload) {
         if (!(upload instanceof Object)) { // 判断传入的是否是对象
             console.error('TypeError：Object parameter required');
@@ -106,6 +172,10 @@ var R = {
     // 由年月日判断多少岁
     // time '0000-00-00'的格式
     birthGetAge : function (time) {
+        if (typeof time != 'string') {
+            console.error('R:: birthGetAge Function : parameter "time" need string format "0000-00-00"');
+            return false;
+        }
         var times = time.split('-'),
             nowTime = new Date(), // 创建新的时间对象
             nowTimes = [ // 当前时间年月日
