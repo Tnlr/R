@@ -112,7 +112,7 @@ function serialize (form) {
     		case 'checkbox' :
     		    if (!field.checked) {
     		    	break;
-    		    }
+    		    };
 
     		default :
     		    if (field.name.length) {

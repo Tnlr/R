@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>carousel</title>
+    <link rel="stylesheet" type="text/css" href="carousel.css">
+    <script type="text/javascript" src="carousel.js"></script>
+</head>
+<body>
+    <div style="width: 700px; margin: 0 auto; height: 300px;">
+        <div class="r-carousel">
+            <span>&lt;</span>
+            <div>
+                <img src="../../img/1.jpg" alt="">
+                <img src="../../img/2e.jpg" alt="">
+                <img src="../../img/header.jpg" alt="">
+                <img src="../../img/header.jpg" alt="">
+             </div>
+            <span>&gt;</span>
+        </div>
+    </div>
+
+    <div style="width: 700px; margin: 0 auto; height: 300px;">
+        <div class="r-carousel">
+            <span>&lt;</span>
+            <div>
+                <img src="../../img/1.jpg" alt="">
+                <img src="../../img/2e.jpg" alt="">
+                <img src="../../img/header.jpg" alt="">
+            </div>
+            <span>&gt;</span>
+        </div>
+    </div>
+    
+
+    <script type="text/javascript">
+        var elementCarousle = document.querySelectorAll('.r-carousel');
+        carousel (elementCarousle[0]);
+        carousel (elementCarousle[1]);
+    </script>
+</body>
+</html>

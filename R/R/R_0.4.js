@@ -35,8 +35,11 @@
 		getCharCode(event)：获取字符编码
         throttle：函数节流：方法，运行环境（可选）
         ----------------------------------------------
+
+        ----------------------------------------------
         addObjectAppendChain():附加原型链
 
+    
 */
 
 
@@ -428,6 +431,59 @@ var R = {
         }, 100);
     },
 
+    //------------------------------------------------
+    // Ajax
+    // c为对象，包含的属性：type,data,url,async,contentType,success,error
+    ajax : function (c) {
+        c.type = !c.type ? c.type : 'post'; // 判断类型
+        if (!c.url) { // 判断url
+            console.error('R::ajax FUNCTION : need URL');
+        }
+
+        c.async = !c.async ? c.async : true;
+        c.contentType = !c.contentType ? c.contentType : 'application/x-www-form-urlencoded';
+
+
+        if(c.data) { // 对数据进行处理
+            var data;
+             //formdata方式
+           if(!(c.data instanceof FormData)) {
+
+            // 对象方式
+                for (let item in c.data) {
+                    data += '&' + item + '=' + c.data[item];
+                }
+                c.data = data;
+            }
+        }
+
+        requestfunction(c.success, c.error);
+
+        function requestfunction (success) {
+            var xmlhttp;
+
+            if (window.XMLHttpRequest) {
+                xmlhttp = new XMLHttpRequest();
+            } else {
+                xmlhttp = new ActiveXObject('Microsoft.XMLHPPT');
+            }
+
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200){
+                    success(JSON.parse(xmlhttp.responseText));
+                } else {
+                    error(JSON.parse(xmlhttp.responseText));
+                }
+            };
+
+            xmlhttp.open(this.type, this.url, this.async);
+
+            if(this.contentType) {
+                xmlhttp.setRequestHeader("Content-type", this.contentType);
+            }
+            xmlhttp.send(this.data);
+        }
+    },
 
     //------------------------------------------------
     // 为Object添加原型方法

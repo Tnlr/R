@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <canvas width="500px" height="500px" id="canvas"></canvas>
+    <script type="text/javascript">
+        
+        var element = document.getElementById('canvas');
+        var canvas = element.getContext('2d');
+
+        canvas.beginPath();
+        canvas.arc(250, 250, 100, 0, Math.PI * 2, true);
+        canvas.fillStyle = '#000000';
+        canvas.fill();
+        canvas.closePath();
+
+        var t = cirl(60, 3);
+        console.log(t);
+
+        for (let item in t) {
+            draw(t[item][0], t[item][1], 20);
+        }
+        
+
+        function draw (x, y, r) {
+            canvas.beginPath();
+            canvas.arc(250 + x, 250 + y, r, 0, Math.PI * 2, true);
+            canvas.fillStyle = '#ffffff';
+            canvas.fill();
+            canvas.closePath();
+        }
+
+        // 按照圆公式，通过x坐标获取y坐标
+        // r，d：计算圆的半径，x坐标有多少个间隔
+        function cirl (r, d) {
+            var y,
+                t = [];
+
+            var x = jiaodu(r, d); // 先获取x坐标
+
+            for (let item in x ) {
+                y = Math.sqrt(Math.abs(r * r - x[item] * x[item])); // 获取y坐标
+                t.push([x[item], y]); // 获取正y坐标
+
+                if (y != 0) {
+                    t.push([x[item], -y]); // 获取负y坐标
+                }
+            }
+            return t;
+        }
+
+        // 每次变动固定角度，获取x坐标
+        // r，sum：半径，要取的坐标个数
+        function jiaodu (r, sum) {
+            var x = []; // x 坐标函数数组
+
+            for (let item = 0; item <= sum; item++) {
+                let c = Math.PI / sum * item; // 计算角度
+                let l = r * Math.cos(c); // 计算x坐标
+                x.push(l);
+            }
+
+            return x;
+        }
+    </script>
+</body>
+</html>
